@@ -88,13 +88,13 @@ def _chunk_text(text: str, max_len: int = 450) -> list[str]:
             if current:
                 chunks.append(current)
                 current = ""
-            # If single part still too long, hard-split on words
+            # If single part still too long, hard-split on words (preserve space)
             while len(part) > max_len:
                 cut = part.rfind(" ", 0, max_len)
                 if cut == -1:
                     cut = max_len
                 chunks.append(part[:cut])
-                part = part[cut:].lstrip()
+                part = part[cut:]
             current = part
     if current:
         chunks.append(current)
@@ -241,21 +241,13 @@ class Translator:
                     return text
                 translated_chunks.append(ru)
             # chunks already contain separators, join directly
-            if any("\n" in c for c in translated_chunks):
-                result = "".join(translated_chunks)
-            else:
-                result = " ".join(translated_chunks)
-            if len(result) < len(stripped) * 0.5:
-                result = " ".join(translated_chunks)
+            result = "".join(translated_chunks)
             return _apply_glossary(result)
         result = self._translate_single(stripped, src=src, tgt=tgt)
         if result is None:
             print(f"[translator] WARN failed to translate after {self.max_retries} retries: {stripped[:80]!r}")
             return text
         return result
-
-    def translate_description(self, text: str) -> str:
-        return self.translate(text)
 
 
 # Quick smoke test when run directly

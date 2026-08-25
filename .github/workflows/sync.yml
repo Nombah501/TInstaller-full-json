@@ -98,10 +98,16 @@ jobs:
         if: steps.changes.outputs.changed == 'false'
         run: echo "No changes — upstream and translations are up to date."
 
+      - name: Prepare Pages site
+        run: |
+          mkdir -p _site
+          cp index.html qr.png 1.json ru.json _site/
+          echo "Site files:" && ls -lh _site/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "_site"
 
       - name: Notify on failure
         if: failure()

@@ -7,11 +7,14 @@
 <meta name="description" content="Русскоязычный форк базы TInstaller (topperbg) для Fire TV Stick — весь каталог на русском, обновляется ежедневно. Вставь ссылку в TInstaller.">
 <meta property="og:title" content="TInstaller — русскоязычный каталог">
 <meta property="og:description" content="Весь каталог topperbg на русском для Fire TV Stick. Ежедневный автосинк.">
-<meta property="og:image" content="qr.png">
-<meta name="theme-color" content="#0a0a0a">
+<meta property="og:image" content="https://nombah501.github.io/TInstaller-full-json/qr.png">
+<meta property="og:url" content="https://nombah501.github.io/TInstaller-full-json/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nombah501.github.io/TInstaller-full-json/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TInstaller — русскоязычный каталог","url":"https://nombah501.github.io/TInstaller-full-json/","description":"Русскоязычный форк базы TInstaller для Fire TV Stick — весь каталог на русском, обновляется ежедневно"}</script>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0a0a0a;color:#eee;line-height:1.5}
-a{color:#4ea1ff}
 .wrap{max-width:780px;margin:0 auto;padding:24px}
 .card{background:#111;border:1px solid #222;border-radius:16px;padding:20px;margin:16px 0}
 h1{font-size:28px;margin:0 0 8px}
@@ -37,7 +40,7 @@ small{color:#888}
     <div>
       <h2 style="margin-top:0">Быстрый ввод с пульта</h2>
       <p>Отсканируй QR телефоном или введи короткую ссылку в TInstaller:</p>
-      <p><code>https://t.ly/69_C_</code></p>
+      <p><code id="u1">https://t.ly/69_C_</code> <button onclick="copy('https://t.ly/69_C_')" style="margin-left:6px;padding:4px 8px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer">Копировать</button></p>
       <p><small>Регистр важен: <code>69_C_</code> — заглавная <code>C</code> и <code>_</code> на странице символов. Проще печатать с телефона через приложение Fire TV.</small></p>
       <p><small>Если t.ly не сработала — используй ссылки ниже (тот же файл).</small></p>
     </div>
@@ -48,16 +51,16 @@ small{color:#888}
     <div class="grid">
       <div>
         <b>Короткая (рекомендуется)</b><br>
-        <code>https://t.ly/69_C_</code><br>
+        <code>https://t.ly/69_C_</code> <button onclick="copy('https://t.ly/69_C_')" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button><br>
         <a class="btn" href="https://t.ly/69_C_">Открыть</a>
       </div>
       <div>
         <b>GitHub Pages</b><br>
-        <code>https://nombah501.github.io/TInstaller-full-json/1.json</code><br>
+        <code>https://nombah501.github.io/TInstaller-full-json/1.json</code> <button onclick="copy('https://nombah501.github.io/TInstaller-full-json/1.json')" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button><br>
         <a class="btn" href="1.json">Открыть 1.json</a>
       </div>
     </div>
-    <p><b>Raw</b> <code>https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json</code> · Алиас <code>ru.json</code> по тем же путям.</p>
+    <p><b>Raw</b> <code id="uRaw">https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json</code> <button onclick="copy('https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json')" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button> · Алиас <code>ru.json</code> по тем же путям.</p>
   </div>
 
   <div class="card">
@@ -73,10 +76,11 @@ small{color:#888}
   <p><small>Данные — <a href="https://topperbg.github.io/">topperbg</a>. Форк — перевод и автоматизация. Исходник: <a href="https://github.com/Nombah501/TInstaller-full-json">GitHub</a></small></p>
 </div>
 <script>
+function copy(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>{const b=event.target;b.textContent='Скопировано';setTimeout(()=>b.textContent='Копировать',1500)}).catch(()=>fallback(t));else fallback(t)}
+function fallback(t){const e=document.createElement('textarea');e.value=t;document.body.appendChild(e);e.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(e)}
 fetch('1.json').then(r=>r.json()).then(d=>{
   const cats=new Set(d.apps.map(a=>a.category));
   document.getElementById('stats').textContent=d.apps.length+' приложений · '+cats.size+' категорий';
 }).catch(()=>{document.getElementById('stats').textContent='каталог доступен'});
 </script>
-</body>
 </html>

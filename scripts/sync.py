@@ -145,10 +145,6 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
 
     all_desc_hashes = {text_hash(a.get("description","")) for a in upstream_apps if a.get("description","").strip()}
     stats["hits"] = len(all_desc_hashes) - len(needed) if not force else 0
-    if force:
-        stats["hits"] = 0
-        # misses already counted, but force means all were needed
-        pass
 
     if needed_cat:
         print(f"[sync] translating {len(needed_cat)} new categories...")
