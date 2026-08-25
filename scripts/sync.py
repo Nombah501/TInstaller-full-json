@@ -1,37 +1,7 @@
 #!/usr/bin/env python3
 """
 sync.py — incremental BG→RU fork sync for TInstaller JSON.
-
-What it does:
-  1. Fetch upstream https://topperbg.github.io/1.json
-  2. Load local 1.json (translated) + data/translation_cache.json
-  3. Diff by content hash — only new/changed Bulgarian descriptions/categories hit the translator API
-  4. Merge: new apps get translated, removed apps disappear, updated apps get fresh translation, unchanged apps keep cached RU text
-  5. Write updated 1.json (RU) + translation_cache.json + upstream snapshot
-
-Incremental = fast + cheap + preserves manual fixes in cache.
-
-Usage:
-  python scripts/sync.py                  # fetch + translate diff + write
-  python scripts/sync.py --force          # re-translate everything
-  python scripts/sync.py --dry-run        # print stats, no write
-  python scripts/sync.py --upstream PATH  # use local file instead of fetching
-  python scripts/sync.py --check          # exit 1 if upstream changed and local is stale
-
-Cache format (data/translation_cache.json):
-  {
-    "meta": {"updated": "2026-08-26T...", "upstream_count": 197},
-    "texts": {
-      "<sha16(bg_text)>": {"bg": "...", "ru": "...", "type": "description|category"}
-    }
-  }
-  Secondary index by bg_text hash — stable across reorders. If BG text changes, hash misses and new translation is fetched.
-
-Exit codes:
-  0 — success (or dry-run, or no changes)
-  1 — upstream unreachable / check shows stale
 """
-
 from __future__ import annotations
 
 import argparse
@@ -40,6 +10,8 @@ import hashlib
 import json
 import sys
 import time
+import os
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -48,46 +20,53 @@ OUTPUT_JSON = ROOT / "1.json"
 CACHE_JSON = ROOT / "data" / "translation_cache.json"
 UPSTREAM_SNAPSHOT = ROOT / "data" / "upstream_snapshot.json"
 
-# Allow running as module
 sys.path.insert(0, str(Path(__file__).parent))
 from translator import Translator, CATEGORY_MAP, text_hash
 
-def fetch_upstream(url: str = UPSTREAM_URL, timeout: int = 30) -> dict:
+def fetch_upstream(url: str = UPSTREAM_URL, timeout: int = 30, retries: int = 3) -> dict:
     import urllib.request
-    print(f"[sync] fetching {url} ...")
-    req = urllib.request.Request(url, headers={"User-Agent": "TInstaller-fork-sync/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        raw = resp.read().decode("utf-8")
-    data = json.loads(raw)
-    if "apps" not in data or not isinstance(data["apps"], list):
-        raise ValueError(f"unexpected upstream shape: keys={list(data.keys())}")
-    print(f"[sync] fetched {len(data['apps'])} apps from upstream")
-    return data
-
+    import urllib.error
+    last_err = None
+    for attempt in range(retries):
+        try:
+            print(f"[sync] fetching {url} (attempt {attempt+1}/{retries}) ...")
+            req = urllib.request.Request(url, headers={"User-Agent": "TInstaller-fork-sync/1.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                raw = resp.read().decode("utf-8")
+            data = json.loads(raw)
+            if "apps" not in data or not isinstance(data["apps"], list):
+                raise ValueError(f"unexpected upstream shape: keys={list(data.keys())}")
+            print(f"[sync] fetched {len(data['apps'])} apps from upstream")
+            return data
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError, json.JSONDecodeError) as e:
+            last_err = e
+            print(f"[sync] fetch attempt {attempt+1} failed: {e}")
+            if attempt < retries - 1:
+                backoff = (2 ** attempt) * 2
+                print(f"[sync] retrying in {backoff}s...")
+                time.sleep(backoff)
+    raise RuntimeError(f"failed to fetch upstream after {retries} attempts: {last_err}")
 
 def load_cache() -> dict:
     if CACHE_JSON.exists():
         try:
             c = json.loads(CACHE_JSON.read_text(encoding="utf-8"))
-            # migrate old flat format if needed
             if "texts" in c:
                 return c
-            # legacy: flat {hash: ru} -> wrap
             return {"meta": {}, "texts": c}
         except Exception as e:
             print(f"[sync] WARN cache corrupt, starting fresh: {e}")
     return {"meta": {}, "texts": {}}
 
-
 def save_cache(cache: dict, force: bool = False):
     CACHE_JSON.parent.mkdir(parents=True, exist_ok=True)
-    # Only bump timestamp if there were actual changes or forced
     if force or cache.get("_dirty"):
         cache["meta"]["updated"] = datetime.datetime.utcnow().isoformat() + "Z"
         cache.pop("_dirty", None)
-    CACHE_JSON.write_text(json.dumps({k: v for k, v in cache.items() if not k.startswith("_")}, ensure_ascii=False, indent=2), encoding="utf-8")
+    # atomic write
+    data = json.dumps({k: v for k, v in cache.items() if not k.startswith("_")}, ensure_ascii=False, indent=2)
+    _atomic_write(CACHE_JSON, data)
     print(f"[sync] cache saved: {len(cache['texts'])} entries -> {CACHE_JSON}")
-
 
 def load_translated() -> dict | None:
     if OUTPUT_JSON.exists():
@@ -97,22 +76,29 @@ def load_translated() -> dict | None:
             print(f"[sync] WARN existing 1.json corrupt: {e}")
     return None
 
+def _atomic_write(path: Path, content: str):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(path.parent), prefix=path.name + ".tmp.")
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+            f.write(content)
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except:
+            pass
+        raise
 
 def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = False) -> tuple[list[dict], dict]:
-    """
-    Returns (translated_apps, stats).
-    Mutates cache in place (adds new entries).
-    """
     translator = Translator(delay=0.6)
     texts: dict = cache.setdefault("texts", {})
-
     stats = {"total": len(upstream_apps), "hits": 0, "misses": 0, "categories_hit": 0, "categories_miss": 0}
     translated_apps: list[dict] = []
 
-    # Collect unique BG texts to minimize API calls (descriptions deduplicated)
-    # Build list of needed translations first, then batch with dedup
-    needed_desc_hashes: dict[str, str] = {}  # hash -> bg_text
-    needed_cat_hashes: dict[str, str] = {}
+    # Deduplicate across descriptions and categories via single needed dict
+    needed: dict[str, str] = {}  # hash -> bg_text (for descriptions)
+    needed_cat: dict[str, str] = {}
 
     for app in upstream_apps:
         for field in ("description", "category"):
@@ -120,56 +106,68 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
             if not bg or not bg.strip():
                 continue
             h = text_hash(bg)
-            if field == "description":
-                if h not in texts and h not in needed_desc_hashes and not force:
-                    needed_desc_hashes[h] = bg
-                elif force and h not in needed_desc_hashes:
-                    needed_desc_hashes[h] = bg
-            else:  # category
-                # categories go through static map — only unknown ones need API
-                if bg.strip() in CATEGORY_MAP:
+            if h in texts and not force:
+                continue
+            # Categories covered by static map never need API
+            if field == "category" and bg.strip() in CATEGORY_MAP:
+                continue
+            # Also check case-insensitive for categories
+            if field == "category":
+                found = False
+                for k in CATEGORY_MAP:
+                    if k.casefold() == bg.strip().casefold():
+                        found = True
+                        break
+                if found:
                     continue
-                if h not in texts and h not in needed_cat_hashes and not force:
-                    needed_cat_hashes[h] = bg
-                elif force and h not in needed_cat_hashes:
-                    needed_cat_hashes[h] = bg
+            if field == "description":
+                if h not in needed:
+                    needed[h] = bg
+            else:
+                if h not in needed and h not in needed_cat:
+                    needed_cat[h] = bg
 
-    # Translate needed descriptions
-    if needed_desc_hashes:
-        print(f"[sync] translating {len(needed_desc_hashes)} new/changed descriptions...")
-        for i, (h, bg) in enumerate(needed_desc_hashes.items(), 1):
+    # Translate needed descriptions (chunking handled inside Translator)
+    if needed:
+        print(f"[sync] translating {len(needed)} new/changed descriptions...")
+        for i, (h, bg) in enumerate(needed.items(), 1):
             ru = translator.translate(bg)
+            # Don't poison cache if translation failed (returned original)
+            if ru.strip() == bg.strip():
+                print(f"[sync] WARN skip caching untranslated: {bg[:60]!r}")
+                stats["misses"] += 1
+                continue
             texts[h] = {"bg": bg, "ru": ru, "type": "description"}
-            stats["misses"] += 1
             cache["_dirty"] = True
+            stats["misses"] += 1
             if i % 10 == 0:
-                print(f"  ... {i}/{len(needed_desc_hashes)}")
-    # Hits = total unique descs that were already cached
-    # Compute total unique descs
+                print(f"  ... {i}/{len(needed)}")
+
     all_desc_hashes = {text_hash(a.get("description","")) for a in upstream_apps if a.get("description","").strip()}
-    stats["hits"] = len(all_desc_hashes) - len(needed_desc_hashes) if not force else 0
+    stats["hits"] = len(all_desc_hashes) - len(needed) if not force else 0
     if force:
         stats["hits"] = 0
-        stats["misses"] = len(all_desc_hashes)
+        # misses already counted, but force means all were needed
+        pass
 
-    # Translate needed categories (rare — usually 0 because of static map)
-    if needed_cat_hashes:
-        print(f"[sync] translating {len(needed_cat_hashes)} new categories...")
-        for h, bg in needed_cat_hashes.items():
+    if needed_cat:
+        print(f"[sync] translating {len(needed_cat)} new categories...")
+        for h, bg in needed_cat.items():
             ru = translator.translate_category(bg)
+            if ru.strip() == bg.strip():
+                print(f"[sync] WARN skip caching untranslated category: {bg!r}")
+                stats["categories_miss"] += 1
+                continue
             texts[h] = {"bg": bg, "ru": ru, "type": "category"}
-            stats["categories_miss"] += 1
             cache["_dirty"] = True
+            stats["categories_miss"] += 1
+
     all_cat_hashes = {text_hash(a.get("category","")) for a in upstream_apps if a.get("category","").strip()}
-    cached_cat = sum(1 for h in all_cat_hashes if h in texts or text_hash.__doc__)
-    # simpler: categories hits = total unique cats covered by static map + cache
-    stats["categories_hit"] = len(all_cat_hashes) - len(needed_cat_hashes)
+    stats["categories_hit"] = len(all_cat_hashes) - len(needed_cat)
 
-    # Now build translated apps using cache (+ static map for categories)
+    # Build translated apps
     for app in upstream_apps:
-        out = dict(app)  # shallow copy
-
-        # description
+        out = dict(app)
         bg_desc = app.get("description", "")
         if bg_desc and bg_desc.strip():
             h = text_hash(bg_desc)
@@ -179,30 +177,36 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
             elif bg_desc.strip() in CATEGORY_MAP:
                 out["description"] = CATEGORY_MAP[bg_desc.strip()]
             else:
-                # fallback: if not in cache (should not happen), keep original
-                out["description"] = bg_desc
-
-        # category
+                # check case-insensitive
+                mapped = None
+                for k, v in CATEGORY_MAP.items():
+                    if k.casefold() == bg_desc.strip().casefold():
+                        mapped = v
+                        break
+                out["description"] = mapped if mapped else bg_desc
         bg_cat = app.get("category", "")
         if bg_cat and bg_cat.strip():
-            # static map wins
             if bg_cat.strip() in CATEGORY_MAP:
                 out["category"] = CATEGORY_MAP[bg_cat.strip()]
             else:
-                h = text_hash(bg_cat)
-                entry = texts.get(h)
-                if entry:
-                    out["category"] = entry["ru"]
+                # case-insensitive check
+                mapped = None
+                for k, v in CATEGORY_MAP.items():
+                    if k.casefold() == bg_cat.strip().casefold():
+                        mapped = v
+                        break
+                if mapped:
+                    out["category"] = mapped
                 else:
-                    # try live translate (should have been cached above)
-                    out["category"] = translator.translate_category(bg_cat)
-
-        # title: keep as-is (brand names). Only translate if purely Cyrillic Bulgarian title?
-        # We intentionally do NOT translate titles to avoid breaking brand names.
+                    h = text_hash(bg_cat)
+                    entry = texts.get(h)
+                    if entry:
+                        out["category"] = entry["ru"]
+                    else:
+                        out["category"] = translator.translate_category(bg_cat)
         translated_apps.append(out)
 
     return translated_apps, stats
-
 
 def main():
     ap = argparse.ArgumentParser(description="Incremental BG->RU sync for TInstaller fork")
@@ -215,7 +219,6 @@ def main():
 
     out_path = Path(args.out) if args.out else OUTPUT_JSON
 
-    # Load upstream
     if args.upstream:
         upstream = json.loads(Path(args.upstream).read_text(encoding="utf-8"))
         print(f"[sync] loaded upstream from {args.upstream}: {len(upstream['apps'])} apps")
@@ -223,12 +226,17 @@ def main():
         try:
             upstream = fetch_upstream()
         except Exception as e:
-            print(f"[sync] ERROR fetching upstream: {e}", file=sys.stderr)
-            sys.exit(1)
+            # Try fallback to snapshot if available
+            if UPSTREAM_SNAPSHOT.exists():
+                print(f"[sync] fetch failed, falling back to snapshot: {e}", file=sys.stderr)
+                upstream = json.loads(UPSTREAM_SNAPSHOT.read_text(encoding="utf-8"))
+                print(f"[sync] fallback: {len(upstream['apps'])} apps from snapshot")
+            else:
+                print(f"[sync] ERROR fetching upstream: {e}", file=sys.stderr)
+                sys.exit(1)
 
     upstream_apps: list[dict] = upstream["apps"]
 
-    # Check mode: compare upstream hash vs snapshot
     if args.check:
         if not UPSTREAM_SNAPSHOT.exists():
             print("[sync] --check: no snapshot, considered stale")
@@ -254,31 +262,24 @@ def main():
 
     if args.dry_run:
         print("[sync] dry-run, not writing")
-        # preview first 2
         print(json.dumps(translated_apps[:2], ensure_ascii=False, indent=2)[:3000])
         return
 
-    # Write output
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+    _atomic_write(out_path, json.dumps(output, ensure_ascii=False, indent=2))
     print(f"[sync] wrote {len(translated_apps)} apps -> {out_path}")
 
-    # Write snapshots
     UPSTREAM_SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
-    # Save raw upstream snapshot for diff / debugging (not served, just for history)
-    # Keep it compact but pretty for git diff readability
-    UPSTREAM_SNAPSHOT.write_text(json.dumps(upstream, ensure_ascii=False, indent=2), encoding="utf-8")
+    _atomic_write(UPSTREAM_SNAPSHOT, json.dumps(upstream, ensure_ascii=False, indent=2))
     save_cache(cache, force=args.force)
-    # Also write ru.json alias (same content) for convenience — TInstaller can use either
+
     ru_alias = ROOT / "ru.json"
     if ru_alias != out_path:
-        ru_alias.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+        _atomic_write(ru_alias, json.dumps(output, ensure_ascii=False, indent=2))
         print(f"[sync] alias -> {ru_alias}")
 
-    # Print summary for commit message
     print(f"[sync] done. Upstream {len(upstream_apps)} -> RU {len(translated_apps)}. "
           f"New translations: {stats['misses']} desc + {stats['categories_miss']} cat.")
-
 
 if __name__ == "__main__":
     main()

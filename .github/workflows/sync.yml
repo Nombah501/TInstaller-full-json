@@ -2,7 +2,6 @@ name: Sync upstream & translate
 
 on:
   schedule:
-    # Daily at 03:00 UTC — upstream updates daily per user report
     - cron: "0 3 * * *"
   workflow_dispatch:
     inputs:
@@ -16,8 +15,14 @@ on:
       - "scripts/**"
       - ".github/workflows/sync.yml"
 
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   sync:
@@ -25,21 +30,32 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
       - name: Install translator deps
-        run: pip install deep-translator
+        run: pip install deep-translator==1.11.4
 
       - name: Fetch & incremental translate
+        id: sync
         run: |
           if [ "${{ inputs.force }}" = "true" ]; then
             python scripts/sync.py --force
           else
             python scripts/sync.py
           fi
+
+      - name: Fallback to snapshot if upstream unreachable
+        if: failure() && steps.sync.outcome == 'failure'
+        run: |
+          echo "Upstream fetch failed, rebuilding from last snapshot..."
+          python scripts/sync.py --upstream data/upstream_snapshot.json
+          echo "Fallback succeeded, will commit snapshot-based rebuild"
 
       - name: Check for changes
         id: changes
@@ -57,8 +73,31 @@ jobs:
           git add 1.json ru.json data/translation_cache.json data/upstream_snapshot.json
           COUNT=$(python3 -c "import json; print(len(json.load(open('1.json'))['apps']))")
           git commit -m "sync: update RU fork from upstream (${COUNT} apps) [skip ci]"
-          git push
+          # Rebase in case of concurrent push
+          for i in 1 2 3; do
+            git pull --rebase origin ${{ github.ref_name }} && git push && break || sleep 2
+          done
 
       - name: No changes
         if: steps.changes.outputs.changed == 'false'
         run: echo "No changes — upstream and translations are up to date."
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+  deploy:
+    needs: sync
+    runs-on: ubuntu-latest
+    if: always() && needs.sync.result != 'failure'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
