@@ -14,7 +14,7 @@ on:
     paths:
       - "scripts/**"
       - ".github/workflows/sync.yml"
-
+      - "requirements.txt"
 concurrency:
   group: sync
   cancel-in-progress: false
