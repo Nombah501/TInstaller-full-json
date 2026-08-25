@@ -204,8 +204,8 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
                         out["category"] = entry["ru"]
                     else:
                         # Don't hammer API per app if category translation previously failed
-                        # Keep original — will be retried next time as needed_cat (one call total)
                         out["category"] = bg_cat
+        translated_apps.append(out)
 
     return translated_apps, stats
 
