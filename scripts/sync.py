@@ -79,10 +79,13 @@ def load_cache() -> dict:
     return {"meta": {}, "texts": {}}
 
 
-def save_cache(cache: dict):
+def save_cache(cache: dict, force: bool = False):
     CACHE_JSON.parent.mkdir(parents=True, exist_ok=True)
-    cache["meta"]["updated"] = datetime.datetime.utcnow().isoformat() + "Z"
-    CACHE_JSON.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Only bump timestamp if there were actual changes or forced
+    if force or cache.get("_dirty"):
+        cache["meta"]["updated"] = datetime.datetime.utcnow().isoformat() + "Z"
+        cache.pop("_dirty", None)
+    CACHE_JSON.write_text(json.dumps({k: v for k, v in cache.items() if not k.startswith("_")}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[sync] cache saved: {len(cache['texts'])} entries -> {CACHE_JSON}")
 
 
@@ -138,6 +141,7 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
             ru = translator.translate(bg)
             texts[h] = {"bg": bg, "ru": ru, "type": "description"}
             stats["misses"] += 1
+            cache["_dirty"] = True
             if i % 10 == 0:
                 print(f"  ... {i}/{len(needed_desc_hashes)}")
     # Hits = total unique descs that were already cached
@@ -155,6 +159,7 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
             ru = translator.translate_category(bg)
             texts[h] = {"bg": bg, "ru": ru, "type": "category"}
             stats["categories_miss"] += 1
+            cache["_dirty"] = True
     all_cat_hashes = {text_hash(a.get("category","")) for a in upstream_apps if a.get("category","").strip()}
     cached_cat = sum(1 for h in all_cat_hashes if h in texts or text_hash.__doc__)
     # simpler: categories hits = total unique cats covered by static map + cache
@@ -263,8 +268,7 @@ def main():
     # Save raw upstream snapshot for diff / debugging (not served, just for history)
     # Keep it compact but pretty for git diff readability
     UPSTREAM_SNAPSHOT.write_text(json.dumps(upstream, ensure_ascii=False, indent=2), encoding="utf-8")
-    save_cache(cache)
-
+    save_cache(cache, force=args.force)
     # Also write ru.json alias (same content) for convenience — TInstaller can use either
     ru_alias = ROOT / "ru.json"
     if ru_alias != out_path:
