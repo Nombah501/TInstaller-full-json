@@ -19,11 +19,11 @@ on:
 concurrency:
   group: sync
   cancel-in-progress: false
-
 permissions:
   contents: write
   pages: write
   id-token: write
+  issues: write
 
 jobs:
   sync:
@@ -67,15 +67,16 @@ jobs:
           python3 -c "import json; d=json.load(open('1.json')); print(f\"apps: {len(d['apps'])}\"); c=json.load(open('data/translation_cache.json')); print(f\"cache: {len(c['texts'])} entries\")"
 
       - name: t.ly healthcheck (browser UA)
+        continue-on-error: true
         run: |
           echo "Checking https://t.ly/69_C_ ..."
-          FINAL=$(curl -sL -A "Mozilla/5.0 (Linux; Android 11; AFTSSS) AppleWebKit/537.36" -o /tmp/tly.json -w "%{url_effective}" https://t.ly/69_C_)
+          FINAL=$(curl -sL -A "Mozilla/5.0 (Linux; Android 11; AFTSSS) AppleWebKit/537.36" -o /tmp/tly.json -w "%{url_effective}" https://t.ly/69_C_ || true)
           echo "Final URL: $FINAL"
           if ! echo "$FINAL" | grep -q "nombah501.github.io/TInstaller-full-json/1.json"; then
             echo "::warning::t.ly did not redirect to expected Pages URL (got $FINAL) — check https://t.ly/69_C_ manually"
+          else
+            python3 -c "import json; d=json.load(open('/tmp/tly.json')); print(f\"t.ly OK: {len(d['apps'])} apps\")" 2>&1 || echo "::warning::t.ly returned non-JSON (likely Cloudflare challenge in CI) — check manually, but not failing workflow"
           fi
-          python3 -c "import json; d=json.load(open('/tmp/tly.json')); assert 'apps' in d, 't.ly did not return JSON'; print(f\"t.ly OK: {len(d['apps'])} apps\")"
-
       - name: Commit & push
         if: steps.changes.outputs.changed == 'true'
         run: |
