@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TInstaller — русскоязычный каталог для Fire TV Stick</title>
+<meta name="description" content="Русскоязычный форк базы TInstaller (topperbg) для Fire TV Stick — весь каталог на русском, обновляется ежедневно. Вставь ссылку в TInstaller.">
+<meta property="og:title" content="TInstaller — русскоязычный каталог">
+<meta property="og:description" content="Весь каталог topperbg на русском для Fire TV Stick. Ежедневный автосинк.">
+<meta property="og:image" content="qr.png">
+<meta name="theme-color" content="#0a0a0a">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0a0a0a;color:#eee;line-height:1.5}
+a{color:#4ea1ff}
+.wrap{max-width:780px;margin:0 auto;padding:24px}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:20px;margin:16px 0}
+h1{font-size:28px;margin:0 0 8px}
+h2{font-size:18px;margin:20px 0 8px;color:#aaa;text-transform:uppercase;letter-spacing:.05em}
+code{background:#1a1a1a;border:1px solid #222;padding:2px 6px;border-radius:6px;font-size:14px;word-break:break-all}
+.qr{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.qr img{width:180px;height:180px;border-radius:12px;background:#fff;padding:8px}
+.badge{display:inline-block;background:#1a1a1a;border:1px solid #222;border-radius:999px;padding:4px 10px;font-size:12px;margin:4px 6px 4px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.btn{display:inline-block;background:#4ea1ff;color:#000;font-weight:600;padding:10px 16px;border-radius:10px;text-decoration:none;margin:4px 0}
+small{color:#888}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>TInstaller — русскоязычный каталог</h1>
+  <p>Живой форк <a href="https://topperbg.github.io/1.json">topperbg.github.io/1.json</a> — весь каталог на русском для <b>Amazon Fire TV Stick</b> и приложения <b>TInstaller</b>. Обновляется ежедневно.</p>
+  <p><span class="badge" id="stats">загрузка…</span> <span class="badge">BG → RU</span> <span class="badge">daily sync</span></p>
+
+  <div class="card qr">
+    <img src="qr.png" alt="QR для https://t.ly/69_C_">
+    <div>
+      <h2 style="margin-top:0">Быстрый ввод с пульта</h2>
+      <p>Отсканируй QR телефоном или введи короткую ссылку в TInstaller:</p>
+      <p><code>https://t.ly/69_C_</code></p>
+      <p><small>Регистр важен: <code>69_C_</code> — заглавная <code>C</code> и <code>_</code> на странице символов. Проще печатать с телефона через приложение Fire TV.</small></p>
+      <p><small>Если t.ly не сработала — используй ссылки ниже (тот же файл).</small></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Ссылки для TInstaller</h2>
+    <div class="grid">
+      <div>
+        <b>Короткая (рекомендуется)</b><br>
+        <code>https://t.ly/69_C_</code><br>
+        <a class="btn" href="https://t.ly/69_C_">Открыть</a>
+      </div>
+      <div>
+        <b>GitHub Pages</b><br>
+        <code>https://nombah501.github.io/TInstaller-full-json/1.json</code><br>
+        <a class="btn" href="1.json">Открыть 1.json</a>
+      </div>
+    </div>
+    <p><b>Raw</b> <code>https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json</code> · Алиас <code>ru.json</code> по тем же путям.</p>
+  </div>
+
+  <div class="card">
+    <h2>Как ввести</h2>
+    <ol>
+      <li>Открой TInstaller → найди поле для URL JSON-каталога.</li>
+      <li>Введи одну из ссылок выше.</li>
+      <li>Дождись загрузки — каталог появится на русском.</li>
+    </ol>
+    <p><small>Формат: <code>{"apps": [{title, description, category, url, mirror, ver}]}</code> — совместим с оригиналом.</small></p>
+  </div>
+
+  <p><small>Данные — <a href="https://topperbg.github.io/">topperbg</a>. Форк — перевод и автоматизация. Исходник: <a href="https://github.com/Nombah501/TInstaller-full-json">GitHub</a></small></p>
+</div>
+<script>
+fetch('1.json').then(r=>r.json()).then(d=>{
+  const cats=new Set(d.apps.map(a=>a.category));
+  document.getElementById('stats').textContent=d.apps.length+' приложений · '+cats.size+' категорий';
+}).catch(()=>{document.getElementById('stats').textContent='каталог доступен'});
+</script>
+</body>
+</html>

@@ -15,6 +15,7 @@ on:
       - "scripts/**"
       - ".github/workflows/sync.yml"
       - "requirements.txt"
+
 concurrency:
   group: sync
   cancel-in-progress: false
@@ -39,7 +40,7 @@ jobs:
           cache: pip
 
       - name: Install translator deps
-        run: pip install deep-translator==1.11.4
+        run: pip install -r requirements.txt
 
       - name: Fetch & incremental translate
         id: sync
@@ -65,6 +66,16 @@ jobs:
           echo "--- stats ---"
           python3 -c "import json; d=json.load(open('1.json')); print(f\"apps: {len(d['apps'])}\"); c=json.load(open('data/translation_cache.json')); print(f\"cache: {len(c['texts'])} entries\")"
 
+      - name: t.ly healthcheck (browser UA)
+        run: |
+          echo "Checking https://t.ly/69_C_ ..."
+          FINAL=$(curl -sL -A "Mozilla/5.0 (Linux; Android 11; AFTSSS) AppleWebKit/537.36" -o /tmp/tly.json -w "%{url_effective}" https://t.ly/69_C_)
+          echo "Final URL: $FINAL"
+          if ! echo "$FINAL" | grep -q "nombah501.github.io/TInstaller-full-json/1.json"; then
+            echo "::warning::t.ly did not redirect to expected Pages URL (got $FINAL) — check https://t.ly/69_C_ manually"
+          fi
+          python3 -c "import json; d=json.load(open('/tmp/tly.json')); assert 'apps' in d, 't.ly did not return JSON'; print(f\"t.ly OK: {len(d['apps'])} apps\")"
+
       - name: Commit & push
         if: steps.changes.outputs.changed == 'true'
         run: |
@@ -73,10 +84,14 @@ jobs:
           git add 1.json ru.json data/translation_cache.json data/upstream_snapshot.json
           COUNT=$(python3 -c "import json; print(len(json.load(open('1.json'))['apps']))")
           git commit -m "sync: update RU fork from upstream (${COUNT} apps) [skip ci]"
-          # Rebase in case of concurrent push
+          # Rebase in case of concurrent push — fail explicitly if all retries exhausted
+          pushed=false
           for i in 1 2 3; do
-            git pull --rebase origin ${{ github.ref_name }} && git push && break || sleep 2
+            if git pull --rebase origin ${{ github.ref_name }} && git push; then pushed=true; break; fi
+            echo "push attempt $i failed, retrying..."
+            sleep 2
           done
+          if [ "$pushed" != "true" ]; then echo "::error::git push failed after 3 attempts"; exit 1; fi
 
       - name: No changes
         if: steps.changes.outputs.changed == 'false'
@@ -87,10 +102,19 @@ jobs:
         with:
           path: "."
 
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::warning::Sync failed — check https://github.com/${{ github.repository }}/actions"
+          # Create an issue for visibility (no secret needed, uses GITHUB_TOKEN)
+          gh api repos/${{ github.repository }}/issues -f title="Sync failed: ${{ github.run_id }}" -f body="Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" 2>&1 | head -5 || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   deploy:
     needs: sync
     runs-on: ubuntu-latest
-    if: always() && needs.sync.result != 'failure'
+    if: needs.sync.result == 'success'
     permissions:
       pages: write
       id-token: write

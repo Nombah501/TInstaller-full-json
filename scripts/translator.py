@@ -230,24 +230,24 @@ class Translator:
             chunks = _chunk_text(stripped, max_len=450)
             translated_chunks: list[str] = []
             for chunk in chunks:
+                # Skip chunks without cyrillic (URLs, version strings) — don't fail whole text
+                if not any('\u0400' <= ch <= '\u04FF' for ch in chunk):
+                    translated_chunks.append(chunk)
+                    continue
                 ru = self._translate_single(chunk, src=src, tgt=tgt)
                 if ru is None:
                     # If any chunk fails, fail the whole text — don't return partial
                     print(f"[translator] WARN chunk failed, falling back to original for: {stripped[:60]!r}")
                     return text
                 translated_chunks.append(ru)
-            # Re-join with space (original separators were consumed in chunking)
-            # Try to preserve paragraph breaks: if original had \n\n, keep them
-            sep = "\n\n" if "\n\n" in stripped else " "
-            # Simple heuristic: join with sep, but chunks already contain their separators
-            # Our _chunk_text consumed separators, so join with empty and let chunks carry them
-            # Actually chunks were split keeping separators, so join without extra
-            result = "".join(translated_chunks) if any("\n" in c for c in translated_chunks) else " ".join(translated_chunks)
-            # If chunking lost newlines, try to restore by joining with space
+            # chunks already contain separators, join directly
+            if any("\n" in c for c in translated_chunks):
+                result = "".join(translated_chunks)
+            else:
+                result = " ".join(translated_chunks)
             if len(result) < len(stripped) * 0.5:
                 result = " ".join(translated_chunks)
             return _apply_glossary(result)
-
         result = self._translate_single(stripped, src=src, tgt=tgt)
         if result is None:
             print(f"[translator] WARN failed to translate after {self.max_retries} retries: {stripped[:80]!r}")
