@@ -1,79 +1,117 @@
-# TInstaller — русская база (форк topperbg)
+```
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│   ████████╗ ██╗███╗   ██╗███████╗████████╗ █████╗   │
+│   ╚══██╔══╝ ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗  │
+│      ██║    ██║██╔██╗ ██║███████╗   ██║   ███████║  │
+│      ██║    ██║██║╚██╗██║╚════██║   ██║   ██╔══██║  │
+│      ██║    ██║██║ ╚████║███████║   ██║   ██║  ██║  │
+│      ╚═╝    ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝  │
+│                                                     │
+│          русскоязычный форк  ·  Fire TV Stick       │
+│            topperbg  ──BG──►  RU  ·  daily          │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
 
-Актуальный форк [topperbg.github.io/1.json](https://topperbg.github.io/1.json) с переводом на русский язык для **Amazon Fire TV Stick** и **TInstaller**.
+[![Sync](https://github.com/Nombah501/TInstaller-full-json/actions/workflows/sync.yml/badge.svg)](https://github.com/Nombah501/TInstaller-full-json/actions/workflows/sync.yml)
+[![Pages](https://img.shields.io/badge/Pages-live-brightgreen)](https://nombah501.github.io/TInstaller-full-json/1.json)
+[![JSON](https://img.shields.io/badge/format-TInstaller%20JSON-blue)](#использование)
 
-- **197 приложений**, 14 категорий — полностью переведено
-- Обновляется ежедневно автоматически (GitHub Actions, 03:00 UTC)
-- Инкрементальный перевод: при изменении оригинала переводится только новое/изменённое, остальное берётся из кэша
+Живой форк [topperbg.github.io/1.json](https://topperbg.github.io/1.json) — весь каталог на русском языке для **Amazon Fire TV Stick** и приложения **TInstaller**.
 
-## Использование в TInstaller
+Ежедневно подтягивает оригинал (болгарский → обновляется каждый день) и точечно переводит только новые/изменённые описания. Остальное — из кэша.
 
-Вставь одну из ссылок в TInstaller (поле для URL JSON):
+> База динамическая: сегодня ~200 приложений в 14 категориях, завтра может быть больше/меньше — форк повторяет оригинал 1-в-1, только на русском.
 
-**GitHub Pages** (после включения Pages в настройках репозитория):
+---
+
+### 📺 Использование в TInstaller
+
+Вставь в поле URL JSON один из вариантов:
+
+**GitHub Pages**
 ```
 https://nombah501.github.io/TInstaller-full-json/1.json
 ```
 
-**Raw** (работает сразу, без Pages):
+**Raw (работает и без Pages)**
 ```
 https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json
 ```
 
-Формат полностью совместим с оригиналом: `{"apps": [...]}` с полями `title`, `description`, `category`, `url`, `mirror`, `ver`.
+Также доступен алиас `ru.json` по тем же путям. Формат совместим: `{"apps": [{title, description, category, url, mirror, ver, ...}]}`.
 
-## Что переводится
+---
 
-- `description` — полностью на русский, с сохранением эмодзи, списков и форматирования
-- `category` — стабильный словарь:
-  - Маркети → Маркеты, Кино → Кино, Инструменти → Инструменты, Стрийминг → Стриминг, Ланчъри → Лаунчеры, Видеоплеъри → Видеоплееры, Браузъри → Браузеры, Скрийнсейвъри → Скринсейверы, Kodi repo → Kodi репозитории, и т.д.
-- `title` — не переводится (бренды/названия приложений)
-- `url`, `mirror`, `ver` — без изменений
+### 🔤 Что переводится
 
-## Как работает автообновление
+| Поле | Правило |
+|------|---------|
+| `description` | Полностью на русский, с эмодзи, списками и форматированием |
+| `category` | Стабильный словарь: `Маркети`→`Маркеты` · `Инструменти`→`Инструменты` · `Ланчъри`→`Лаунчеры` · `Видеоплеъри`→`Видеоплееры` · `Браузъри`→`Браузеры` · `Скрийнсейвъри`→`Скринсейверы` · `Kodi repo`→`Kodi репозитории` · `Plex&Jellyfin`→`Plex и Jellyfin` · `Kodi Modi`→`Kodi Моды` и т.д. |
+| `title` | Не трогается (бренды) |
+| `url` / `mirror` / `ver` | Без изменений |
+
+---
+
+### ⚙️ Как работает автообновление
 
 ```
-upstream (topperbg)  →  scripts/sync.py  →  1.json (RU) + ru.json
-                         ↑                        |
-                    data/translation_cache.json ←─┘
-                    data/upstream_snapshot.json
+                         ┌──────────────────────┐
+  https://topperbg.github.io/1.json ──►│   scripts/sync.py  │──► 1.json (RU)
+                         │         │              │     ru.json
+                         │    sha256(bg_text)    │
+                         │         │              │
+                         │         ▼              │
+                         │ data/translation_     │
+                         │      cache.json ◄─────┘
+                         │         ▲
+                         │ data/upstream_        │
+                         │  snapshot.json        │
+                         └──────────────────────┘
 ```
 
-- `scripts/sync.py` скачивает оригинал, считает `sha256` каждого болгарского `description`/`category`, ищет в `data/translation_cache.json`.
-- **Hit** → берёт готовый русский текст из кэша (мгновенно, без API).
-- **Miss** (новое/изменённое приложение) → переводит через `MyMemory` (бесплатно, без ключа) с ретраями и фолбэком на `LibreTranslate`, сохраняет в кэш.
-- Перезапись `1.json` / `ru.json` только если upstream действительно изменился.
-- История кэша коммитится — ручные правки перевода сохраняются между синками.
+- `sync.py` считает `sha256` каждого болгарского `description`/`category`
+- **hit** → берёт готовый перевод из `data/translation_cache.json` (мгновенно)
+- **miss** → переводит через `MyMemory` (бесплатно, без ключа) с ретраями + фолбэк `LibreTranslate`, сохраняет в кэш
+- Коммитит только если upstream действительно изменился — ручные правки в кэше сохраняются
 
-### Локальный запуск
+#### Локально
 
 ```bash
-pip install deep-translator      # единственный внешний пакет
-python scripts/sync.py           # инкрементальный синк
-python scripts/sync.py --dry-run # проверить без записи
-python scripts/sync.py --force   # переведи всё заново
+pip install deep-translator
+python scripts/sync.py            # инкрементально
+python scripts/sync.py --dry-run  # проверка без записи
+python scripts/sync.py --force    # переперевести всё
 ```
 
-### GitHub Actions
+#### На GitHub
 
-`.github/workflows/sync.yml` — ежедневно `0 3 * * *` + ручной `workflow_dispatch` (галочка `force`). Коммитит только если есть изменения.
+`.github/workflows/sync.yml` — `cron: 0 3 * * *` + `workflow_dispatch` (галочка `force`). Логи и бейдж — во вкладке **Actions**.
 
-## Структура
+---
+
+### 📂 Структура
 
 ```
-1.json                      # главный файл для TInstaller (RU)
-ru.json                     # алиас того же файла
-data/translation_cache.json # 204 записи: bg hash → ru
-data/upstream_snapshot.json # последний скачанный оригинал (для диффа)
-scripts/
-  translator.py             # абстракция BG→RU, статический словарь категорий
-  sync.py                   # инкрементальный синк
+1.json                        главный файл для TInstaller (RU)
+ru.json                       алиас
+data/translation_cache.json   кэш: bg hash → ru
+data/upstream_snapshot.json   последний оригинал (для диффа)
+scripts/translator.py         BG→RU, словарь категорий
+scripts/sync.py               инкрементальный синк
+.github/workflows/sync.yml    daily sync
 ```
 
-## Первоначальный перевод
+---
 
-Балк-перевод 179 уникальных описаний выполнен LLM с ручной вычиткой (исправлены `Поддържа`→`Поддерживает`, `Възможности`→`Возможности`, `Приложението`→`Приложение` и транслит `скрийнсейвър`→`скринсейвер`). Дальше поддерживается инкрементально через API — быстро и консистентно.
+### 📝 О переводе
 
-## Лицензия
+Первичный перевод выполнен LLM с вычиткой (исправлены `Поддържа`→`Поддерживает`, `Възможности`→`Возможности`, `Приложението`→`Приложение`, транслит `скрийнсейвър`→`скринсейвер`). Далее — инкрементально через API.
 
-Оригинальные данные — [topperbg](https://topperbg.github.io/). Форк — перевод и автоматизация.
+---
+
+### Лицензия
+
+Данные — [topperbg](https://topperbg.github.io/). Форк — перевод и автоматизация.
