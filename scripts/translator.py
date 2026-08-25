@@ -91,7 +91,7 @@ def _chunk_text(text: str, max_len: int = 450) -> list[str]:
             # If single part still too long, hard-split on words (preserve space)
             while len(part) > max_len:
                 cut = part.rfind(" ", 0, max_len)
-                if cut == -1:
+                if cut <= 0:
                     cut = max_len
                 chunks.append(part[:cut])
                 part = part[cut:]

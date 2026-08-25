@@ -40,7 +40,7 @@ small{color:#888}
     <div>
       <h2 style="margin-top:0">Быстрый ввод с пульта</h2>
       <p>Отсканируй QR телефоном или введи короткую ссылку в TInstaller:</p>
-      <p><code id="u1">https://t.ly/69_C_</code> <button onclick="copy('https://t.ly/69_C_')" style="margin-left:6px;padding:4px 8px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer">Копировать</button></p>
+      <p><code id="u1">https://t.ly/69_C_</code> <button onclick="copy('https://t.ly/69_C_', this)" style="margin-left:6px;padding:4px 8px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer">Копировать</button></p>
       <p><small>Регистр важен: <code>69_C_</code> — заглавная <code>C</code> и <code>_</code> на странице символов. Проще печатать с телефона через приложение Fire TV.</small></p>
       <p><small>Если t.ly не сработала — используй ссылки ниже (тот же файл).</small></p>
     </div>
@@ -51,16 +51,16 @@ small{color:#888}
     <div class="grid">
       <div>
         <b>Короткая (рекомендуется)</b><br>
-        <code>https://t.ly/69_C_</code> <button onclick="copy('https://t.ly/69_C_')" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button><br>
+        <code>https://t.ly/69_C_</code> <button onclick="copy('https://t.ly/69_C_', this)" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button><br>
         <a class="btn" href="https://t.ly/69_C_">Открыть</a>
       </div>
       <div>
         <b>GitHub Pages</b><br>
-        <code>https://nombah501.github.io/TInstaller-full-json/1.json</code> <button onclick="copy('https://nombah501.github.io/TInstaller-full-json/1.json')" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button><br>
+        <code>https://nombah501.github.io/TInstaller-full-json/1.json</code> <button onclick="copy('https://nombah501.github.io/TInstaller-full-json/1.json', this)" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button><br>
         <a class="btn" href="1.json">Открыть 1.json</a>
       </div>
     </div>
-    <p><b>Raw</b> <code id="uRaw">https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json</code> <button onclick="copy('https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json')" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button> · Алиас <code>ru.json</code> по тем же путям.</p>
+    <p><b>Raw</b> <code id="uRaw">https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json</code> <button onclick="copy('https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json', this)" style="padding:2px 6px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#eee;cursor:pointer;font-size:12px">Копировать</button> · Алиас <code>ru.json</code> по тем же путям.</p>
   </div>
 
   <div class="card">
@@ -76,8 +76,8 @@ small{color:#888}
   <p><small>Данные — <a href="https://topperbg.github.io/">topperbg</a>. Форк — перевод и автоматизация. Исходник: <a href="https://github.com/Nombah501/TInstaller-full-json">GitHub</a></small></p>
 </div>
 <script>
-function copy(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>{const b=event.target;b.textContent='Скопировано';setTimeout(()=>b.textContent='Копировать',1500)}).catch(()=>fallback(t));else fallback(t)}
-function fallback(t){const e=document.createElement('textarea');e.value=t;document.body.appendChild(e);e.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(e)}
+function copy(t,btn){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>{btn.textContent='Скопировано';setTimeout(()=>btn.textContent='Копировать',1500)}).catch(()=>fallback(t,btn));else fallback(t,btn)}
+function fallback(t,btn){const e=document.createElement('textarea');e.value=t;document.body.appendChild(e);e.select();try{document.execCommand('copy');if(btn){btn.textContent='Скопировано';setTimeout(()=>btn.textContent='Копировать',1500)}}catch(e){}document.body.removeChild(e)}
 fetch('1.json').then(r=>r.json()).then(d=>{
   const cats=new Set(d.apps.map(a=>a.category));
   document.getElementById('stats').textContent=d.apps.length+' приложений · '+cats.size+' категорий';

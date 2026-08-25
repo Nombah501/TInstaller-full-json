@@ -120,6 +120,9 @@ def translate_incremental(upstream_apps: list[dict], cache: dict, force: bool = 
                         break
                 if found:
                     continue
+            # Descriptions that equal a category name should use static map (consistency + save API)
+            if field == "description" and any(k.casefold() == bg.strip().casefold() for k in CATEGORY_MAP):
+                continue
             if field == "description":
                 if h not in needed:
                     needed[h] = bg

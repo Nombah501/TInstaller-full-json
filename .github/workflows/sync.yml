@@ -20,13 +20,13 @@ concurrency:
   group: sync
   cancel-in-progress: false
 permissions:
-  contents: write
-  pages: write
-  id-token: write
-  issues: write
+  contents: read
 
 jobs:
   sync:
+    permissions:
+      contents: write
+      issues: write
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -79,6 +79,8 @@ jobs:
           fi
       - name: Commit & push
         if: steps.changes.outputs.changed == 'true'
+        env:
+          REF: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -88,7 +90,7 @@ jobs:
           # Rebase in case of concurrent push — fail explicitly if all retries exhausted
           pushed=false
           for i in 1 2 3; do
-            if git pull --rebase origin ${{ github.ref_name }} && git push; then pushed=true; break; fi
+            if git pull --rebase origin "$REF" && git push; then pushed=true; break; fi
             echo "push attempt $i failed, retrying..."
             sleep 2
           done
