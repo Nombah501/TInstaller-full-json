@@ -12,12 +12,12 @@
 
 **GitHub Pages** (после включения Pages в настройках репозитория):
 ```
-https://<твой-username>.github.io/<repo>/1.json
+https://nombah501.github.io/TInstaller-full-json/1.json
 ```
 
 **Raw** (работает сразу, без Pages):
 ```
-https://raw.githubusercontent.com/<твой-username>/<repo>/main/1.json
+https://raw.githubusercontent.com/Nombah501/TInstaller-full-json/main/1.json
 ```
 
 Формат полностью совместим с оригиналом: `{"apps": [...]}` с полями `title`, `description`, `category`, `url`, `mirror`, `ver`.
