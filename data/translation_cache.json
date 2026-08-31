@@ -5,7 +5,7 @@
     "fixed_at": "2026-08-25T21:12:02.259266Z",
     "total_apps": 197,
     "identity_added": 11,
-    "updated": "2026-08-25T21:34:40.498577Z"
+    "updated": "2026-08-31T09:26:28.194108Z"
   },
   "texts": {
     "998db59f7cfa6e87": {
@@ -1026,6 +1026,11 @@
     "1ec76f19b0fe1af6": {
       "bg": "wolfylauncherbyfidybg",
       "ru": "wolfylauncherbyfidybg",
+      "type": "description"
+    },
+    "28dbc9fb881a9206": {
+      "bg": "📝нов стартер за Android TV 9 и по-нова версия, предназначен за киномани.\n\n✅ Какво ново:\n➖Добавена поддръжка за Android 14\n➖Фиксирани икони в лентата на състоянието (USB, Bluetooth)\n➖Добавена настройка на цвета на лентата на състоянието\n➖Коригиране на грешки\n\n💥Name: ATV Launcher Pro\n💥Version: 0.1.40-pro\n💥Developer: DStudio Canada\n💥Required OS: Android 6.0+\n💥Updated: 22.08.2026\n💥MOD info:\n⚡️PRO by TryRoom\n⚡️BULGARIAN translate\n❗️NOTE: Device language must set to Bulgarian too!\n💥What's new:\n🟢Layout Editor - rearrange your home screen right on the grid;\n🟢Section styles - border, background, padding, full width, presets;\n🟢Tile aspect ratio and scale mode (Fill, Fit, Stretch);\n🟢Icon pack support and new banner styles;\n🟢Video wallpapers with sound;\n🟢Move tiles between sections;\n🟢Digital Clock widget, Quick Settings, VPN icon;\n🟢Home button redirect, more languages.\n\n✧Release by fidyBG✧",
+      "ru": "📝новый лаунчер для Android TV 9 и выше, предназначенный для киноманов.\n\n✅ Что нового:\n➖Добавлена поддержка Android 14\n➖Исправлены иконки в строке состояния (USB, Bluetooth)\n➖Добавлена настройка цвета строки состояния\n➖Работа над ошибками\n\n💥Название: ATV Launcher Pro\n💥Версия: 0.1.40-pro\n💥Разработчик: DStudio Canada\n💥Требуемая ОС: Android 6.0+\n💥Обновлено: 22.08.2026\nИнформация о 💥МОДИФИКАЦИИ:\n⚡️PRO от TryRoom\nПеревод на ⚡️БОЛГАРСКИЙ❗️NOTE: Device language must set to Bulgarian too!\n💥What's new:\n🟢Layout Editor - rearrange your home screen right on the grid;\n🟢Section styles - border, background, padding, full width, presets;\n🟢Tile aspect ratio and scale mode (Fill, Fit, Stretch);\n🟢Icon pack support and new banner styles;\n🟢Video wallpapers with sound;\n🟢Move tiles between sections;\n🟢Digital Clock widget, Quick Settings, VPN icon;\n🟢Home button redirect, more languages.\n\n✧Release by fidyBG✧",
       "type": "description"
     }
   }

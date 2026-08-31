@@ -169,7 +169,7 @@
     {
       "title": "NUM",
       "description": "Онлайн кинотеатър, който търси в торент тракъри. За гледането ще ви трябва торент-енджин като TorrServe и плеър като Kodi",
-      "url": "https://www.dropbox.com/scl/fi/7fyvq20o3m1gqg02xcgx0/NUM_1.0.150-release.apk?rlkey=rmmtv6rch2nfodfaqygl0us60&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/lx6q726e5d18bmxnacf9m/NUM-BG-v1.0.150-fidyBG.apk?rlkey=tnazc6ktpyvslo8jfr811poha&dl=1",
       "mirror": "num",
       "ver": "1.0.150",
       "app_review": "https://www.youtube.com/watch?v=5LcmAIBmBPg",
@@ -1120,8 +1120,8 @@
     },
     {
       "title": "ATV Launcher",
-      "description": "📝нов стартер за Android TV 9 и по-нова версия, предназначен за киномани.\n\n✅ Какво ново:\n➖Добавена поддръжка за Android 14\n➖Фиксирани икони в лентата на състоянието (USB, Bluetooth)\n➖Добавена настройка на цвета на лентата на състоянието\n➖Коригиране на грешки",
-      "url": "https://www.dropbox.com/scl/fi/5h88o3d8j7na8ae09lbwd/ATV_Launcher_v0.1.40-pro_-30001165-_Mod.apk?rlkey=25zunxssls77wmwtc017wpfb7&dl=1",
+      "description": "📝нов стартер за Android TV 9 и по-нова версия, предназначен за киномани.\n\n✅ Какво ново:\n➖Добавена поддръжка за Android 14\n➖Фиксирани икони в лентата на състоянието (USB, Bluetooth)\n➖Добавена настройка на цвета на лентата на състоянието\n➖Коригиране на грешки\n\n💥Name: ATV Launcher Pro\n💥Version: 0.1.40-pro\n💥Developer: DStudio Canada\n💥Required OS: Android 6.0+\n💥Updated: 22.08.2026\n💥MOD info:\n⚡️PRO by TryRoom\n⚡️BULGARIAN translate\n❗️NOTE: Device language must set to Bulgarian too!\n💥What's new:\n🟢Layout Editor - rearrange your home screen right on the grid;\n🟢Section styles - border, background, padding, full width, presets;\n🟢Tile aspect ratio and scale mode (Fill, Fit, Stretch);\n🟢Icon pack support and new banner styles;\n🟢Video wallpapers with sound;\n🟢Move tiles between sections;\n🟢Digital Clock widget, Quick Settings, VPN icon;\n🟢Home button redirect, more languages.\n\n✧Release by fidyBG✧",
+      "url": "https://www.dropbox.com/scl/fi/cri4vbrr2s4gxoha34tcz/ATV-Launcher-Pro-v0.1.40-fidyBG.apk?rlkey=cr6lcjps1h1v5grkcxecbu3j8&dl=1",
       "mirror": "atvlauncher",
       "category": "Ланчъри",
       "ver": "0.1.40"
@@ -1210,7 +1210,7 @@
     {
       "title": "TVLauncher",
       "description": "💬 TV Launcher — Smart TV Box — е прост стартер за Smart TV Box-ве, базирани на Android. TV Launcher - Smart TV Box може да се използва в неговия прост класически стил или можете да изберете по-цветна версия с тапети.\n\nВ приложението можете да зададете свой собствен фон, да изберете размера на шрифта и да персонализирате показването на иконите на програмата. Началната страница също ще показва часовник и икони за Wi-Fi и Bluetooth връзка.",
-      "url": "https://www.dropbox.com/scl/fi/5h88o3d8j7na8ae09lbwd/ATV_Launcher_v0.1.40-pro_-30001165-_Mod.apk?rlkey=25zunxssls77wmwtc017wpfb7&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/cri4vbrr2s4gxoha34tcz/ATV-Launcher-Pro-v0.1.40-fidyBG.apk?rlkey=cr6lcjps1h1v5grkcxecbu3j8&dl=1",
       "mirror": "tvlauncher",
       "category": "Ланчъри",
       "ver": "0.1.40"
@@ -1454,10 +1454,10 @@
     {
       "title": "LM Lancher Manager",
       "description": "Инсталирайте LM 1.0.4, инсталирайте желания лаунчер, например Wolf Launcher или Projectivy Launcher. Работи на всички устройства , както и с нов фърмуер.\nСтаро забравено и отдавна неработещо, но отново възкресено приложение LM 1.0.4 отново може да бъде инсталирано и активирано с помощта на командата:\n\npm grant com.wolf.tn android.permission.WRITE_SECURE_SETTINGS\n\nСлед това изберете желания стартер в него, активирайте първата опция и превключете долните 3 опции на Disabled.\nДолните 3 опции блокират актуализациите, премахват черния списък на забранените приложения, отключват защитата на системата.",
-      "url": "https://www.dropbox.com/scl/fi/dcy6dlbsbnzcer4j4ybfw/LM_1.1.8.apk?rlkey=pna32hajqe7eiqc5il8r9c7ih&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/0nakuk6931xcjwxl7nn1w/LM_2.0.0.apk?rlkey=8iy5h7ia44534ow3ioxs5yu81&dl=1",
       "mirror": "launchermanager",
       "category": "FireTV",
-      "ver": "1.1.8"
+      "ver": "2.0.0"
     },
     {
       "title": "Marine Aquarium",
@@ -1470,10 +1470,10 @@
     {
       "title": "Plezy",
       "description": "Plezy е модерен Plex медиен клиент, който осигурява безпроблемно стрийминг изживяване на настолни и мобилни платформи. Създаден с Flutter, той предлага вградена производителност и изчистен, интуитивен интерфейс за сърфиране и възпроизвеждане на вашата Plex медийна библиотека.\n\nAdded\nPlex and Jellyfin music browsing\nGapless music playback, queue, lyrics, and sleep timer\nAndroid background music playback\nMusic downloads and quality setting\nExplore tab with Trakt and MyAnimeList catalogs\nSeerr sign-in and media requests\nJellyfin favorites filter and actions\nStereo downmix with center channel boost\nDesktop Force TV mode\nLive TV recording library selection\nPlaylist picker search\n\nImproved\nLive TV guide, recordings, and details design\nSettings, sign-in, and profile design\nMusic queue and volume controls\nLibrary filter visibility and management\nTV navigation and scrolling performance\nArtwork loading and memory usage\nPlex Home profile switching\nOffline download ownership and watch syncing\nWindows playback and connectivity\nStream interruption recovery",
-      "url": "https://www.dropbox.com/scl/fi/k3g8y1pkft6rels0gcnq8/plezy-android-armeabi-v7a-2.17.1.apk?rlkey=u9b7cvxvpbcyjlf2xhdwbr9ur&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/luovu0zoywhvk90l45ik8/plezy-2.18.0-android-armeabi-v7a.apk?rlkey=yjzsqkavrf3r7lq84kecnvskk&dl=1",
       "mirror": "plezy",
       "category": "Plex&Jellyfin",
-      "ver": "2.17.1"
+      "ver": "2.18.0"
     },
     {
       "title": "SeasonHit",
