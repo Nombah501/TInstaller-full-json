@@ -783,10 +783,10 @@
     {
       "title": "Nova VideoPlayer",
       "description": "Nova Video Player — универсальный видеоплеер с открытым кодом для медиаприставок на Android TV. Среди преимуществ — плеер может работать с технологиями SMB и DLNA.\n\nЕсть отдельный пользовательский интерфейс \"leanback\" для медиаприставок, режим усиления звука для контроля громкости и динамический ночной режим.\n\nNova Player воспроизводит AC3/DTS (HDMI или S/PDIF) на всех устройствах Android TV и NVidia Shield с архитектурой Rockchip и AmLogic.",
-      "url": "https://www.dropbox.com/scl/fi/6fdv05dr9kodeaw7urg76/NovaVideoPlayer-v.6.4.50.apk?rlkey=zhlz6c32dnwbnxcgwiw4jp5bv&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/e3rf9iy51rrl39cdbvghe/Nova-VideoPlayer-6.4.58-arm64.apk?rlkey=9p239gdm6e2ubxwbtf2j3d8fy&dl=1",
       "mirror": "novavideoplayer",
       "category": "Видеоплееры",
-      "ver": "6.4.50"
+      "ver": "6.4.58"
     },
     {
       "title": "Kodi BG Edition",
@@ -1121,7 +1121,7 @@
     {
       "title": "ATV Launcher",
       "description": "📝новый лаунчер для Android TV 9 и выше, предназначенный для киноманов.\n\n✅ Что нового:\n➖Добавлена поддержка Android 14\n➖Исправлены иконки в строке состояния (USB, Bluetooth)\n➖Добавлена настройка цвета строки состояния\n➖Работа над ошибками\n\n💥Название: ATV Launcher Pro\n💥Версия: 0.1.40-pro\n💥Разработчик: DStudio Canada\n💥Требуемая ОС: Android 6.0+\n💥Обновлено: 22.08.2026\nИнформация о 💥МОДИФИКАЦИИ:\n⚡️PRO от TryRoom\nПеревод на ⚡️БОЛГАРСКИЙ❗️NOTE: Device language must set to Bulgarian too!\n💥What's new:\n🟢Layout Editor - rearrange your home screen right on the grid;\n🟢Section styles - border, background, padding, full width, presets;\n🟢Tile aspect ratio and scale mode (Fill, Fit, Stretch);\n🟢Icon pack support and new banner styles;\n🟢Video wallpapers with sound;\n🟢Move tiles between sections;\n🟢Digital Clock widget, Quick Settings, VPN icon;\n🟢Home button redirect, more languages.\n\n✧Release by fidyBG✧",
-      "url": "https://www.dropbox.com/scl/fi/cri4vbrr2s4gxoha34tcz/ATV-Launcher-Pro-v0.1.40-fidyBG.apk?rlkey=cr6lcjps1h1v5grkcxecbu3j8&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/6x0u4lkah72r9s32hl1bl/ATV-Launcher-Pro-v0.1.40-fidyBG.apk?rlkey=ugoa9rlahlchn0nyik7m0rw3m&dl=1",
       "mirror": "atvlauncher",
       "category": "Лаунчеры",
       "ver": "0.1.40"
@@ -1210,7 +1210,7 @@
     {
       "title": "TVLauncher",
       "description": "💬 TV Launcher — Smart TV Box — простой лаунчер для Smart TV Box на Android. TV Launcher - Smart TV Box можно использовать в простом классическом стиле или выбрать более красочную версию с обоями.\n\nВ приложении можно установить свой собственный фон, выбрать размер шрифта и настроить отображение иконок приложений. На главной странице также отображаются часы и иконки подключения Wi-Fi и Bluetooth.",
-      "url": "https://www.dropbox.com/scl/fi/cri4vbrr2s4gxoha34tcz/ATV-Launcher-Pro-v0.1.40-fidyBG.apk?rlkey=cr6lcjps1h1v5grkcxecbu3j8&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/6x0u4lkah72r9s32hl1bl/ATV-Launcher-Pro-v0.1.40-fidyBG.apk?rlkey=ugoa9rlahlchn0nyik7m0rw3m&dl=1",
       "mirror": "tvlauncher",
       "category": "Лаунчеры",
       "ver": "0.1.40"
