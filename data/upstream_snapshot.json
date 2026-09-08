@@ -109,10 +109,10 @@
     {
       "title": "Lampa",
       "description": "Гледане на онлайн филми, торенти (през услугата TorrServe) на Smart TV и Android TV устройства. Приложението ви позволява да гледате и сериали, анимационни филм. Приложението е много подобно на vplay,но също има избор на филми по актьори и възможност за добавяне на съдържание към отметки. Важно! За да можете да гледате торенти, трябва да отидете в настройките, в секцията Парсер и да го активирате. Освен това e добре да инсталирате и конфигурирате TorrServer.Ако вече съществува и в него са направени всички необходими настройки, тогава в Lampa всичко ще работи.Може да се ползва и Jackett парсър. Търсене на торенти от различни източници - Rutor, Kinozal, Rutracker, TorrentBY, NnmClub. Плейъри - Kodi(ако искате бг субтитри), Vimu, MX Player, VLC, Nova и BSP",
-      "url": "https://www.dropbox.com/scl/fi/jv7dvvuf66u3nqwhwvtpa/Lampa-1.12.9.apk?rlkey=7532yfqs4ul0wj2hz3hlquqa5&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/20lpr2ecaie06khmyt3ip/Lampa-1.13.0.apk?rlkey=a26wby9gyecwukn1bz3p14u93&dl=1",
       "app_review": "https://www.youtube.com/playlist?list=PLoIMtcckkf-NmqeWF8YU_VPCoSP1wP6BC",
       "mirror": "lampa",
-      "ver": "1.12.9",
+      "ver": "1.13.0",
       "category": "Стрийминг"
     },
     {
@@ -1470,10 +1470,10 @@
     {
       "title": "Plezy",
       "description": "Plezy е модерен Plex медиен клиент, който осигурява безпроблемно стрийминг изживяване на настолни и мобилни платформи. Създаден с Flutter, той предлага вградена производителност и изчистен, интуитивен интерфейс за сърфиране и възпроизвеждане на вашата Plex медийна библиотека.\n\nAdded\nPlex and Jellyfin music browsing\nGapless music playback, queue, lyrics, and sleep timer\nAndroid background music playback\nMusic downloads and quality setting\nExplore tab with Trakt and MyAnimeList catalogs\nSeerr sign-in and media requests\nJellyfin favorites filter and actions\nStereo downmix with center channel boost\nDesktop Force TV mode\nLive TV recording library selection\nPlaylist picker search\n\nImproved\nLive TV guide, recordings, and details design\nSettings, sign-in, and profile design\nMusic queue and volume controls\nLibrary filter visibility and management\nTV navigation and scrolling performance\nArtwork loading and memory usage\nPlex Home profile switching\nOffline download ownership and watch syncing\nWindows playback and connectivity\nStream interruption recovery",
-      "url": "https://www.dropbox.com/scl/fi/luovu0zoywhvk90l45ik8/plezy-2.18.0-android-armeabi-v7a.apk?rlkey=yjzsqkavrf3r7lq84kecnvskk&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/8v14m8iy6glmh2lmi4yu6/plezy_2.19.1_android_v7a.apk?rlkey=mxcsbsu8vpbr72w3o8ordm0mj&dl=1",
       "mirror": "plezy",
       "category": "Plex&Jellyfin",
-      "ver": "2.18.0"
+      "ver": "2.19.1"
     },
     {
       "title": "SeasonHit",
@@ -1542,10 +1542,10 @@
     {
       "title": "Seena",
       "description": "Mediahub за TV, Zona + NUM в едно приложение, за гледане на филми, телевизионни сериали, анимационни филми и спортни канали чрез уеб плейър или торенти.",
-      "url": "https://www.dropbox.com/scl/fi/gk3nt1sxepzeeyiirudfo/Seena-1.7.1-arm7.apk?rlkey=kxcm39hd79z8kenfrm4kfx528&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/j1d4wb58wtnc7c62sojnk/Seena-1.7.3.apk?rlkey=nr9w3a5wjhtcwld3k8g76dbfc&dl=1",
       "mirror": "seena",
       "category": "Кино",
-      "ver": "1.7.1"
+      "ver": "1.7.3"
     },
     {
       "title": "LocalSend",
@@ -1594,6 +1594,14 @@
       "mirror": "appteka",
       "category": "Маркети",
       "ver": "23.0"
+    },
+    {
+      "title": "Flux",
+      "description": "Медиен агрегатор за AndroidTV",
+      "url": "https://www.dropbox.com/scl/fi/s80ell3tk6d41phso98mp/Flux-BG-v1.58-fidyBG.apk?rlkey=2hqjxh5q6uff07u7chv44llpc&dl=1",
+      "mirror": "flux",
+      "category": "Стрийминг",
+      "ver": "1.58"
     }
   ]
 }
