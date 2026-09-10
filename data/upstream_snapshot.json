@@ -28,9 +28,9 @@
     {
       "title": "APKPure TV",
       "description": "APKPure App е алтернативен маркет за приложения.Програмата ви позволява да търсите APK файлове на игри и приложения и да ги инсталирате на вашето устройство, без да използвате официалния магазин на Google Play.\nВъзможности:\n— Добър дизайн и малък размер на приложението;\n— Разделяне на игри и приложения в различни категории: популярни, препоръчани, игри, приложения, актуализации (за вашето устройство);\n— Търсене по име на игра, приложение, разработчик;\n- Изтегляне на приложения, които може да не са стандартни (в Google Play) за вашата страна;\n— Доста бързо изтегляне на APK файлове и проста инсталация.\n 🖲️ТРЯБВА МИШКА",
-      "url": "https://www.dropbox.com/scl/fi/sw4yxbdg8a46wklf2j425/APKPure_TV-3.20.33-noArch-fix.apk?rlkey=ft6s1lmigk4qom8tzhewshn9f&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/xjwnaj04ac6ztyqikeh2a/APKPure-3.20.55-arm-v7a-fix.apk?rlkey=zn3h2mgqqw026la2zwlz1fa43&dl=1",
       "mirror": "APKPure",
-      "ver": "3.20.33",
+      "ver": "3.20.55",
       "category": "Маркети"
     },
     {
@@ -445,9 +445,9 @@
     {
       "title": "EON",
       "description": "EON TV ви позволява да гледате на живо всички любими телевизионни канали на широк спектър от устройства, включително смартфони, таблети, лаптопи (компютър, MAC), смарт и Android телевизори.",
-      "url": "https://www.dropbox.com/scl/fi/1ayj666e0dz1xn5bxt4ik/EON-TV_10.5.37273-ATV.apk?rlkey=asseg8dgow1blckw379ibc279&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/kgyqnlv9dxpp3d70a0pyi/EON-TV-V.10.6.17302.apk?rlkey=sgfygjesaoj1jsvqdu3c2ijdv&dl=1",
       "mirror": "eon",
-      "ver": "10.5.37273",
+      "ver": "10.6.17302",
       "category": "IPTV"
     },
     {
@@ -653,11 +653,11 @@
     {
       "title": "Movian",
       "description": "Movian е медиен център, основно предназначен да се използва директно на телевизор.",
-      "url": "https://www.dropbox.com/scl/fi/u5987k2gg6h1ie2rmhbm5/Movian-7.0.279-armv7.apk?rlkey=a5l0y5rx59t6usz4pw53tyye2&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/vk7nipsjdgiejmrrw4uoj/Movian_v7.0.280.apk?rlkey=9xwaq1hkh1hiexq8qeeakxg19&dl=1",
       "mirror": "movian",
       "app_review": "https://www.youtube.com/watch?v=AFlNK1BENTc",
       "category": "Кино",
-      "ver": "7.0.279"
+      "ver": "7.0.280"
     },
     {
       "title": "KinoHome",
@@ -977,10 +977,10 @@
     {
       "title": "Aerial Views",
       "description": "Aerial Views е видео скрийнсейвър, който предоставя красиви 4K HDR видеоклипове за Android TV и FireTV телевизори и боксове.\n\nСъщо така си струва да се отбележи, че поточно предаваните видеоклипове използват много интернет лента. Те могат да се изтеглят и възпроизвеждат локално, ако желаете.",
-      "url": "https://www.dropbox.com/scl/fi/jhhw75viqkbgkz0af6wtq/Aerial-Views-Screensaver-v1.8.3-Official.apk?rlkey=z63v744pelgodp07ufw6b4f62&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/zb9fzyeeswgezb5fn8mik/Aerial-Views-1.8.4.apk?rlkey=niux6yv9tlmui29gw369z3f0a&dl=1",
       "mirror": "aerialview",
       "category": "Скрийнсейвъри",
-      "ver": "1.8.3"
+      "ver": "1.8.4"
     },
     {
       "title": "OnStream",
@@ -1097,10 +1097,10 @@
     {
       "title": "APK Updater",
       "description": "APKUpdater е инструмент с отворен код, който опростява процеса на намиране на актуализации за вашите инсталирани приложения.\nТой предоставя подобна функционалност на магазин за приложения, но вместо да зависи от един източник, той обобщава резултатите от APKMirror, Aptoide, F-Droid, IzzyOnDroid, APKPure, GitLab и GitHub.",
-      "url": "https://www.dropbox.com/scl/fi/pzbh9rxeedmxtk4p9kiqv/apkupdater-release-3.0.3.apk?rlkey=h8x6autw79db2gj8yf68dbzdx&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/ar0ec5ustck4hl9kkxwlt/apkupdater_CI-Release-3.x-604.apk?rlkey=ghmgy61uxwpn91ernbe37yiyd&dl=1",
       "mirror": "apkupdater",
       "category": "Маркети",
-      "ver": "3.0.3"
+      "ver": "604"
     },
     {
       "title": "HB Player",
@@ -1598,10 +1598,10 @@
     {
       "title": "Flux",
       "description": "Медиен агрегатор за AndroidTV",
-      "url": "https://www.dropbox.com/scl/fi/vxiti54o0fkwmv15000o5/Flux-BG-v1.58-fidyBG.apk?rlkey=ljs8j17i9dimmlpvlqri2o3v1&st=dnxwblw6&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/3xc545g7uuq0o24cqiyu8/Flux-BG-v1.59-fidyBG.apk?rlkey=18z93k937xb260r4mr215l5sm&dl=1",
       "mirror": "flux",
       "category": "Стрийминг",
-      "ver": "1.58"
+      "ver": "1.59"
     }
   ]
 }
