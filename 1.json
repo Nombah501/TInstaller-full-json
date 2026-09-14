@@ -109,10 +109,10 @@
     {
       "title": "Lampa",
       "description": "Просмотр онлайн-фильмов, торрентов (через сервис TorrServe) на устройствах Smart TV и Android TV. Приложение позволяет смотреть также сериалы, анимационные фильмы. Приложение очень похоже на vplay, но также есть выбор фильмов по актерам и возможность добавления контента в закладки. Важно! Чтобы смотреть торренты, нужно зайти в настройки, в раздел Парсер и активировать его. Кроме того хорошо установить и настроить TorrServer. Если он уже существует и в нем сделаны все необходимые настройки, то в Lampa все будет работать. Можно использовать и парсер Jackett. Поиск торрентов из разных источников - Rutor, Kinozal, Rutracker, TorrentBY, NnmClub. Плееры - Kodi (если нужны бг субтитры), Vimu, MX Player, VLC, Nova и BSP",
-      "url": "https://www.dropbox.com/scl/fi/20lpr2ecaie06khmyt3ip/Lampa-1.13.0.apk?rlkey=a26wby9gyecwukn1bz3p14u93&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/qhy5sr1llbfvnwpkq14z1/Lampa_v1.13.1.apk?rlkey=sjb12x0stjzpy6mk7z923txb1&dl=1",
       "app_review": "https://www.youtube.com/playlist?list=PLoIMtcckkf-NmqeWF8YU_VPCoSP1wP6BC",
       "mirror": "lampa",
-      "ver": "1.13.0",
+      "ver": "1.13.1",
       "category": "Стриминг"
     },
     {
