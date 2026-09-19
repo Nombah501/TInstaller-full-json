@@ -783,10 +783,10 @@
     {
       "title": "Nova VideoPlayer",
       "description": "Nova Video Player е универсален видео плейър с отворен код за медийни декодери на Android TV. Сред предимствата е, че плейърът може да работи с SMB и DLNA технологии.\n\nИма и отделен потребителски интерфейс \"leanback\" за медийни декодери, режим на усилване на звука за контрол на силата на звука и динамичен нощен режим.\n\nNova Player възпроизвежда AC3/DTS (HDMI или S/PDIF) на всички Android TV и NVidia Shield устройства с Rockchip и AmLogic архитектура.",
-      "url": "https://www.dropbox.com/scl/fi/e3rf9iy51rrl39cdbvghe/Nova-VideoPlayer-6.4.58-arm64.apk?rlkey=9p239gdm6e2ubxwbtf2j3d8fy&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/ktm12sjqw7rmw7f22vt0i/Nova-VideoPlayer-6.4.64-armv7.apk?rlkey=rcntj78mz78r8laoqvbswil7v&dl=1",
       "mirror": "novavideoplayer",
       "category": "Видеоплеъри",
-      "ver": "6.4.58"
+      "ver": "6.4.64"
     },
     {
       "title": "Kodi BG Edition",
@@ -863,10 +863,10 @@
     {
       "title": "Prisma-TV",
       "description": "приложение за онлайн гледане на филми и сериали. Няколко онлайн източника, торенти, трейлъри, история, гъвкави настройки. Предлага се за Android TV (MSX/WebOS)",
-      "url": "https://www.dropbox.com/scl/fi/wefinvdwzpvwb785mcukx/Prisma-1.3.2.apk?rlkey=elkjlgvrafbedzek8xbzej0su&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/n1ji8n611yahayanmht7m/Prisma-1.3.4.apk?rlkey=xiar9nce07an8vm8u2sdw1p55&dl=1",
       "mirror": "prismatv",
       "category": "Кино",
-      "ver": "1.3.2"
+      "ver": "1.3.4"
     },
     {
       "title": "Rotation",
@@ -896,11 +896,11 @@
     {
       "title": "m3u-iptv",
       "description": "Работи на: Samsung/Tizen TV, AndroidTV, LG webOS TV, Windows / Microsoft App Store, Browser https://m3u-ip.tv/browser/\nУдобен интерфейс: Нашето приложение е създадено, за да осигури безпроблемно изживяване, което ви позволява бързо да настроите и предавате своя m3u плейлист.\nИзчистен дизайн: Визуално привлекателното оформление подобрява вашето стрийминг изживяване, което го прави удоволствие да навигирате и да откривате ново съдържание.\nПоддръжка на множество устройства: Достъп до нашето приложение M3U IPTV на различни устройства, включително смартфони, таблети, смарт телевизори и стрийминг устройства.\nБез реклама: Нашето приложение M3U IPTV е напълно без реклами, което гарантира, че можете да се наслаждавате на любимите си канали и съдържание без никакви разсейвания.\nБез регистрация: Започнете стрийминг незабавно с нашето приложение. Просто изтеглете приложението и започнете да се наслаждавате на любимото си съдържание веднага.",
-      "url": "https://www.dropbox.com/scl/fi/lpwdu3dcf3v5jwfmep4gj/M3U-IPTV-Premium-v3.0.15.4-TryRoom.apk?rlkey=8gzkx7zhbxmmg2liw1wlu69kq&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/v3q1l58cdlisvpb0h61nt/M3u-iptv-3.0.19.0.apk?rlkey=o8vloymb7o115dxwy4ye80v2q&dl=1",
       "app_review": "https://m3u-ip.tv/browser/",
       "mirror": "m3uiptv",
       "category": "IPTV",
-      "ver": "3.0.15.4"
+      "ver": "3.0.19.0"
     },
     {
       "title": "HBO Max",
@@ -1486,10 +1486,10 @@
     {
       "title": "TorrServe Client",
       "description": "Приложение за гледане на телевизия, филми и сериали от торенти без теглене, посредством приложенията NUM, Lampa, LazyMediaDeluxe и други",
-      "url": "https://www.dropbox.com/scl/fi/n5703hrx8cvaoh5r5255j/TorrServer-android-142.4-arm7.apk?rlkey=1we9uaag7v3mzfsuumumj08xn&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/f1z6a7ci1af1w0yfxu2s8/TorrServe_MatriX.143.Client.apk?rlkey=ve9jexjv96o9wn7i1wij8ox3z&st=vlie76o4&dl=1",
       "mirror": "torrserve",
       "category": "Стрийминг",
-      "ver": "142.4"
+      "ver": "143"
     },
     {
       "title": "Tevegram",
