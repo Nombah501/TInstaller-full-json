@@ -161,9 +161,9 @@
     {
       "title": "LazyMedia Deluxe Pro",
       "description": "Обширен каталог на филми и сериaли, агрегатор за торенти без ограничения. Има поддръжка на ATV и TV Box.",
-      "url": "https://www.dropbox.com/scl/fi/9d754mjafnzr34cy2vkky/LazyMediaDeluxe-3.459-mod.apk?rlkey=m0rczr1bv44lns666jw6nal7t&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/f0j9vrnjhelynf299y70f/LazyMediaDeluxe-3.466-mod.apk?rlkey=dt4xu99o9mneukxdzxl34tysh&dl=1",
       "mirror": "lazymedia",
-      "ver": "3.459",
+      "ver": "3.466",
       "category": "Кино"
     },
     {
@@ -799,10 +799,10 @@
     {
       "title": "ProgTV",
       "description": "Отличен IPTV плейър с богата функционалност. Стабилна версия.\n\nМожете да свържете плейлист чрез връзка или да използвате шаблон за конкретен доставчик (например Kartina TV). Ministra (Stalker) портали и XtreamCodes връзка също се поддържат.",
-      "url": "https://www.dropbox.com/scl/fi/qvu2654mnr2sa2ly94g91/progTV.beta-3.53.1.apk?rlkey=k1llypc83psnnrto61m90mi13&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/maf71242nzg61lhwfkp88/progTV.beta-3.53.3.apk?rlkey=2fwwgjl6jhxlfls22bs8ednea&dl=1",
       "mirror": "progtv",
       "category": "IPTV",
-      "ver": "3.53.1"
+      "ver": "3.53.3"
     },
     {
       "title": "Onvier",
@@ -1470,10 +1470,10 @@
     {
       "title": "Plezy",
       "description": "Plezy е модерен Plex медиен клиент, който осигурява безпроблемно стрийминг изживяване на настолни и мобилни платформи. Създаден с Flutter, той предлага вградена производителност и изчистен, интуитивен интерфейс за сърфиране и възпроизвеждане на вашата Plex медийна библиотека.\n\nAdded\nPlex and Jellyfin music browsing\nGapless music playback, queue, lyrics, and sleep timer\nAndroid background music playback\nMusic downloads and quality setting\nExplore tab with Trakt and MyAnimeList catalogs\nSeerr sign-in and media requests\nJellyfin favorites filter and actions\nStereo downmix with center channel boost\nDesktop Force TV mode\nLive TV recording library selection\nPlaylist picker search\n\nImproved\nLive TV guide, recordings, and details design\nSettings, sign-in, and profile design\nMusic queue and volume controls\nLibrary filter visibility and management\nTV navigation and scrolling performance\nArtwork loading and memory usage\nPlex Home profile switching\nOffline download ownership and watch syncing\nWindows playback and connectivity\nStream interruption recovery",
-      "url": "https://www.dropbox.com/scl/fi/si44r90rurbupidixr3jx/plezy_2.20.0_v7.apk?rlkey=5h95p2qn10mqcrfjzwvrg5rcs&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/hjic78hm5hoxpjrhqr07y/plezy-2.21.0-v7.apk?rlkey=3gcl5wwtm08ncvpy3zytd2yup&dl=1",
       "mirror": "plezy",
       "category": "Plex&Jellyfin",
-      "ver": "2.20.0"
+      "ver": "2.21.0"
     },
     {
       "title": "SeasonHit",
@@ -1598,10 +1598,10 @@
     {
       "title": "Flux",
       "description": "Медиен агрегатор за AndroidTV",
-      "url": "https://www.dropbox.com/scl/fi/3xc545g7uuq0o24cqiyu8/Flux-BG-v1.59-fidyBG.apk?rlkey=18z93k937xb260r4mr215l5sm&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/0kjdbl3h4mo7rh8ldwsos/Flux-1.61.apk?rlkey=c9kisoh2c5zvnpjr4kcc8m53e&dl=1",
       "mirror": "flux",
       "category": "Стрийминг",
-      "ver": "1.59"
+      "ver": "1.61"
     }
   ]
 }
