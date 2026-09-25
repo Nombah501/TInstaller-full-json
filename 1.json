@@ -135,9 +135,9 @@
     {
       "title": "X-plore",
       "description": "Один из лучших файловых менеджеров. НАЖМИТЕ И УДЕРЖИВАЙТЕ КНОПКУ ОК ДЛЯ ПРОСМОТРА ПРОГРАММЫ",
-      "url": "https://www.dropbox.com/scl/fi/264yj63srqgi97hwxk6ff/X-plore-v4.49.01-MOD-youarefinished.apk?rlkey=32c0iw59olihtycge6zezd4mu&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/05mal2eh4dgs4n1i715wh/X-plore-4.50.00-428r323698.apk?rlkey=9rjtvn1e8hl1d59jk28uz08n5&dl=1",
       "mirror": "x-plore",
-      "ver": "4.49.01",
+      "ver": "4.50.00",
       "app_review": "https://youtu.be/s176z65mzEE",
       "category": "Инструменты"
     },
@@ -153,9 +153,9 @@
     {
       "title": "TiviMate",
       "description": "С Tivimate вы можете смотреть прямые ТВ-каналы от вашего IPTV-провайдера на Android Set-Top Box или ATV.\n\nОсновные функции:\n• Современный пользовательский интерфейс, предназначенный для больших экранов\n• Поддержка нескольких плейлистов\n• Обновление телепрограммы по расписанию\n• Любимые каналы\n• Catch-up\n• Поиск\n• и многое другое",
-      "url": "https://www.dropbox.com/scl/fi/y212ucpp2ceca2jvz4tw3/TiviMate-5.3.2.apk?rlkey=2o66ygjn594zkz81z6n1ie4i9&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/nxcfz12xhj6mdktsfg24m/TiviMate_5.4.0-Beta-2.apk?rlkey=0fo7hzq3fn67zc95oz8elbb4g&dl=1",
       "mirror": "tivimate",
-      "ver": "5.3.2",
+      "ver": "5.4.0",
       "category": "IPTV"
     },
     {
@@ -547,14 +547,6 @@
       "category": "Стриминг"
     },
     {
-      "title": "NovaPlay",
-      "description": "Nova Play ATV",
-      "url": "https://www.dropbox.com/scl/fi/v8j8tdlyn807az6zl6hyo/NovaPlay-ATV-v13.12.1-mod.apk?rlkey=rxlutv7dl79cqwmt9t32z6r4r&dl=1",
-      "mirror": "novaplay",
-      "ver": "13.12.1",
-      "category": "IPTV"
-    },
-    {
       "title": "File commander",
       "description": "File Commander — файловый менеджер, который категоризирует ваши файлы на одной панели. Доступ не только на устройстве, но и ко всем внешним подключениям в облаке и локальной сети (LAN). Есть персональное хранилище, защищенное PIN-кодом, сервис очистки ненужных файлов, встроенные плееры и 5 GB бесплатного облачного хранилища в MobiDrive.",
       "url": "https://www.dropbox.com/scl/fi/5dlgmklleeej0v9z6p1j3/File-Commander-Android-TV-v9.6.600.apk?rlkey=ra2xpn6pd1re05ovokxnhv91s&dl=1",
@@ -781,12 +773,12 @@
       "ver": "2.9.9"
     },
     {
-      "title": "Nova VideoPlayer",
+      "title": "Nova Player",
       "description": "Nova Video Player — универсальный видеоплеер с открытым кодом для медиаприставок на Android TV. Среди преимуществ — плеер может работать с технологиями SMB и DLNA.\n\nЕсть отдельный пользовательский интерфейс \"leanback\" для медиаприставок, режим усиления звука для контроля громкости и динамический ночной режим.\n\nNova Player воспроизводит AC3/DTS (HDMI или S/PDIF) на всех устройствах Android TV и NVidia Shield с архитектурой Rockchip и AmLogic.",
-      "url": "https://www.dropbox.com/scl/fi/ktm12sjqw7rmw7f22vt0i/Nova-VideoPlayer-6.4.64-armv7.apk?rlkey=rcntj78mz78r8laoqvbswil7v&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/mrix4pdxrfibfyc5q7iny/NovaPlayer-6.4.71.apk?rlkey=u0fm0h91u0vkxdjsgiantct3t&dl=1",
       "mirror": "novavideoplayer",
       "category": "Видеоплееры",
-      "ver": "6.4.64"
+      "ver": "6.4.71"
     },
     {
       "title": "Kodi BG Edition",
@@ -1430,10 +1422,10 @@
     {
       "title": "RuStore",
       "description": "Магазин приложений для устройств с операционной системой Android TV. RuTube, Lampa, Prisma, Vimu и многие другие.",
-      "url": "https://www.dropbox.com/scl/fi/eo8x1pycymnrg5a8xlmdb/RuStore-1.102.0.2.apk?rlkey=590jht6k3rjsf2z7wyxxkh6b7&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/wvrmmuvccmwge12s2m83x/RuStore-1.109.0.2.apk?rlkey=ww4ey79fy4mco057npuqibw8e&dl=1",
       "mirror": "rustore",
       "category": "Маркеты",
-      "ver": "1.102.0.2"
+      "ver": "1.109.0.2"
     },
     {
       "title": "MovieBox",
