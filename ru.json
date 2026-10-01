@@ -333,9 +333,9 @@
     {
       "title": "OTT-Navigator",
       "description": "Мощный и очень адаптивный IPTV плеер, который стабильно работает на всех Android устройствах, включая телевизоры (Android TV), (TV-бокс), планшеты и смартфоны",
-      "url": "https://www.dropbox.com/scl/fi/vx5q3jwdif8kdtyq1nb7i/OTT-Navigator-1.7.5.1.apk?rlkey=ntsxiq7d6n1tefg598gxt1bhw&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/g12jg0zpp20ekxkay7ptg/OTT-Navigator-1.7.5.2.apk?rlkey=fdctapl0nfeuw1bab9t34omnc&dl=1",
       "mirror": "ottnavigator",
-      "ver": "1.7.5.1",
+      "ver": "1.7.5.2",
       "category": "IPTV"
     },
     {
@@ -1462,10 +1462,10 @@
     {
       "title": "Plezy",
       "description": "Plezy — современный Plex медиаклиент, обеспечивающий бесперебойный стриминг на десктопных и мобильных платформах. Создан на Flutter, предлагает нативную производительность и чистый, интуитивный интерфейс для просмотра и воспроизведения вашей медиатеки Plex.\n\nДобавлено\nPlex and Jellyfin просмотр музыки\nВоспроизведение музыки без пауз, очередь, тексты песен и таймер сна\nФоновое воспроизведение музыки на Android\nЗагрузка музыки и настройка качества\nВкладка Explore с каталогами Trakt и MyAnimeList\nВход в Seerr и запросы медиа\nФильтр избранного и действия Jellyfin\nСтерео-даунмикс с усилением центрального канала\nПринудительный TV-режим на Desktop\nВыбор библиотеки записей Live TV\nПоиск в выборе плейлистов\n\nУлучшено\nДизайн гида Live TV, записей и детальной информации\nДизайн настроек, входа и профиля\nОчередь музыки и управление громкостью\nОтображение и управление фильтрами библиотеки\nПроизводительность навигации и прокрутки на TV\nЗагрузка обложек и использование памяти\nПереключение профилей Plex Home\nПринадлежность офлайн-загрузок и синхронизация просмотров\nВоспроизведение и подключение на Windows\nВосстановление после прерывания потока",
-      "url": "https://www.dropbox.com/scl/fi/hjic78hm5hoxpjrhqr07y/plezy-2.21.0-v7.apk?rlkey=3gcl5wwtm08ncvpy3zytd2yup&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/lgi6ldv04t5v6t7jhdhho/plezy-2.22.0-v7.apk?rlkey=w118i2po53e7ehtc9mkit4fi0&dl=1",
       "mirror": "plezy",
       "category": "Plex и Jellyfin",
-      "ver": "2.21.0"
+      "ver": "2.22.0"
     },
     {
       "title": "SeasonHit",
