@@ -126,7 +126,7 @@
     {
       "title": "ViMu Media Player",
       "description": "Лучший плеер для Android TV. Модификация. НАЖМИТЕ И УДЕРЖИВАЙТЕ КНОПКУ OK ДЛЯ ПРОСМОТРА ПРОГРАММЫ",
-      "url": "https://www.dropbox.com/scl/fi/9cswxlsjskul3t1cygrp6/Vimu.Media.Player.12.50.apk?rlkey=hwpfpmfsoi3dlskgb9zhx6a84&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/u5an3iasmxsv0owzo3bke/Vimu-videoplayer-12.50-arm7.apk?rlkey=e5t8vimua3qwxl8vkbb6cg45s&dl=1",
       "app_review": "https://www.youtube.com/playlist?list=PLoIMtcckkf-NgL7-Cj49iZgk9U3lGzdAU",
       "mirror": "Vimu",
       "ver": "12.50",
@@ -775,10 +775,10 @@
     {
       "title": "Nova Player",
       "description": "Nova Video Player — универсальный видеоплеер с открытым кодом для медиаприставок на Android TV. Среди преимуществ — плеер может работать с технологиями SMB и DLNA.\n\nЕсть отдельный пользовательский интерфейс \"leanback\" для медиаприставок, режим усиления звука для контроля громкости и динамический ночной режим.\n\nNova Player воспроизводит AC3/DTS (HDMI или S/PDIF) на всех устройствах Android TV и NVidia Shield с архитектурой Rockchip и AmLogic.",
-      "url": "https://www.dropbox.com/scl/fi/mrix4pdxrfibfyc5q7iny/NovaPlayer-6.4.71.apk?rlkey=u0fm0h91u0vkxdjsgiantct3t&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/a9u6ic12t4ikx1d7xula4/Nova-Player-6.5.3.apk?rlkey=5sgaya4qbn7uoq1nbaskf5x09&dl=1",
       "mirror": "novavideoplayer",
       "category": "Видеоплееры",
-      "ver": "6.4.71"
+      "ver": "6.5.3"
     },
     {
       "title": "Kodi BG Edition",
