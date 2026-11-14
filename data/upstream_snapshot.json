@@ -109,10 +109,10 @@
     {
       "title": "Lampa",
       "description": "Гледане на онлайн филми, торенти (през услугата TorrServe) на Smart TV и Android TV устройства. Приложението ви позволява да гледате и сериали, анимационни филм. Приложението е много подобно на vplay,но също има избор на филми по актьори и възможност за добавяне на съдържание към отметки. Важно! За да можете да гледате торенти, трябва да отидете в настройките, в секцията Парсер и да го активирате. Освен това e добре да инсталирате и конфигурирате TorrServer.Ако вече съществува и в него са направени всички необходими настройки, тогава в Lampa всичко ще работи.Може да се ползва и Jackett парсър. Търсене на торенти от различни източници - Rutor, Kinozal, Rutracker, TorrentBY, NnmClub. Плейъри - Kodi(ако искате бг субтитри), Vimu, MX Player, VLC, Nova и BSP",
-      "url": "https://www.dropbox.com/scl/fi/nq12zogspbj5ljolfvhoe/Lampa-1.13.5.apk?rlkey=rmt1t7xd8u6o379regm5so669&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/fkuskn3usmdlhltrwqe9h/Lampa-1.13.6.apk?rlkey=ihw60vje88r3nari2yc9whazq&dl=1",
       "app_review": "https://www.youtube.com/playlist?list=PLoIMtcckkf-NmqeWF8YU_VPCoSP1wP6BC",
       "mirror": "lampa",
-      "ver": "1.13.5",
+      "ver": "1.13.6",
       "category": "Стрийминг"
     },
     {
@@ -161,17 +161,17 @@
     {
       "title": "LazyMedia Deluxe Pro",
       "description": "Обширен каталог на филми и сериaли, агрегатор за торенти без ограничения. Има поддръжка на ATV и TV Box.",
-      "url": "https://www.dropbox.com/scl/fi/02zmjif58rjvw5rkhzezt/LazyMediaDeluxe-3.470-mod.apk?rlkey=emvsw83qg7qotnly3bu61i0f4&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/iwjclpv3bbf30l3cijb4n/LazyMediaDeluxe-3.477-mod.apk?rlkey=ekcy6woktkd017fdjhucgqa50&dl=1",
       "mirror": "lazymedia",
-      "ver": "3.470",
+      "ver": "3.477",
       "category": "Кино"
     },
     {
       "title": "NUM",
       "description": "Онлайн кинотеатър, който търси в торент тракъри. За гледането ще ви трябва торент-енджин като TorrServe и плеър като Kodi",
-      "url": "https://www.dropbox.com/scl/fi/jfdp7rgjdgu1761wuhst0/NUM_1.0.151-release.apk?rlkey=oy37shcazje3395ws2t3zclmz&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/2lhytbxw1qq1n0287ppes/NUM_1.0.152-release.apk?rlkey=kqf8whxrzw88kffyi3ou4rmjv&dl=1",
       "mirror": "num",
-      "ver": "1.0.151",
+      "ver": "1.0.152",
       "app_review": "https://www.youtube.com/watch?v=5LcmAIBmBPg",
       "category": "Кино"
     },
@@ -1476,9 +1476,9 @@
       "ver": "2.4.4.1"
     },
     {
-      "title": "TorrServe Client",
+      "title": "TorrServe_Matrix client",
       "description": "Приложение за гледане на телевизия, филми и сериали от торенти без теглене, посредством приложенията NUM, Lampa, LazyMediaDeluxe и други",
-      "url": "https://www.dropbox.com/scl/fi/9odf732rpr9i3cxu59313/TorrServe_MatriX.144.Client.apk?rlkey=dfbqhyeslax4t9dr5wb1xjyb0&st=ckfn368r&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/8njoc419vqqyw8owubyjk/TorrServe_MatriX.145.Client.apk?rlkey=4yir1glmx1yjsv0uomtlq8vhs&dl=1",
       "mirror": "torrserve",
       "category": "Стрийминг",
       "ver": "144"
