@@ -469,9 +469,9 @@
     {
       "title": "Zank Remote",
       "description": "Zank remote",
-      "url": "https://www.dropbox.com/scl/fi/6nbta5d2m4k74h2ytkn8n/Zank-Remote-Pro-v21.0.3.apk?rlkey=trwveoeoj05c55calb6vk33ke&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/ksqyvv5biedwkbklea15l/Zank_Remote_v21.0.7.apk?rlkey=veeuvrq2hfqtqf0iz8pw31m7q&dl=1",
       "mirror": "zank",
-      "ver": "21.0.3",
+      "ver": "21.0.7",
       "category": "Инструменты"
     },
     {
@@ -1566,10 +1566,10 @@
     {
       "title": "Downloader TVboxBG",
       "description": "Downloader TVboxBG — удобное приложение для Android TV, которое позволяет легко скачивать APK-файлы и другие файлы напрямую из встроенных хранилищ, основное из которых — TVboxBG из скрипта Tinstaller канала, а также хранилищ D.Dimitrov и FidyBG (стандартное хранилище и активная папка PCloud с дополнительными приложениями, ежедневно публикуемыми на канале FidyBG). После скачивания выбранного приложения автоматически запускается установка. При отказе или прерывании ее можно запустить повторно вручную. Предлагает также возможность удаления скачанных файлов после установки. Оптимизировано для управления с пульта дистанционного управления и сенсорных экранов.",
-      "url": "https://www.dropbox.com/scl/fi/5vcw2sp5ilugx3x3tv0y0/Downloader-v9.9.9-fidyBG.apk?rlkey=sfkwu0pb9atbxoauchgth84j3&dl=1",
+      "url": "http://dl.dropbox.com/scl/fi/rlldxy7e55i16dmga2u29/Downloader-TVBoxBG-10.0-fidyBG.apk?rlkey=u6pcvfrsrchhmpnc6e1oqvs4h&st=q8qq5xi6&dl=1",
       "mirror": "downloaderfidybg",
       "category": "Маркеты",
-      "ver": "9.9.9"
+      "ver": "10.0"
     },
     {
       "title": "Monet Launcher",
