@@ -109,10 +109,10 @@
     {
       "title": "Lampa",
       "description": "Просмотр онлайн-фильмов, торрентов (через сервис TorrServe) на устройствах Smart TV и Android TV. Приложение позволяет смотреть также сериалы, анимационные фильмы. Приложение очень похоже на vplay, но также есть выбор фильмов по актерам и возможность добавления контента в закладки. Важно! Чтобы смотреть торренты, нужно зайти в настройки, в раздел Парсер и активировать его. Кроме того хорошо установить и настроить TorrServer. Если он уже существует и в нем сделаны все необходимые настройки, то в Lampa все будет работать. Можно использовать и парсер Jackett. Поиск торрентов из разных источников - Rutor, Kinozal, Rutracker, TorrentBY, NnmClub. Плееры - Kodi (если нужны бг субтитры), Vimu, MX Player, VLC, Nova и BSP",
-      "url": "https://www.dropbox.com/scl/fi/fkuskn3usmdlhltrwqe9h/Lampa-1.13.6.apk?rlkey=ihw60vje88r3nari2yc9whazq&dl=1",
+      "url": "https://www.dropbox.com/scl/fi/ludrvnuygwt06x03i85rx/Lampa-1.13.7.apk?rlkey=bs8s6g1043nayy29sty7y3why&dl=1",
       "app_review": "https://www.youtube.com/playlist?list=PLoIMtcckkf-NmqeWF8YU_VPCoSP1wP6BC",
       "mirror": "lampa",
-      "ver": "1.13.6",
+      "ver": "1.13.7",
       "category": "Стриминг"
     },
     {
@@ -621,10 +621,10 @@
     {
       "title": "Stremio",
       "description": "Stremio предлагает безопасное, современное и беспроблемное развлечение. Благодаря удобному интерфейсу и библиотеке разнообразного контента, включая поддержку 4K HDR, пользователи могут наслаждаться любимыми фильмами и телепередачами на всех своих устройствах. А благодаря своему подходу к безопасности Stremio — лучший выбор для беспроблемного, высококачественного стриминга.\n\nДля работы с торрентами нужен аддон https://stremio-addons.com/torrentio.html",
-      "url": "https://dl.strem.io/android/v1.10.4-androidTV/com.stremio.one-1.10.4-31048580-armeabi-v7a.apk",
+      "url": "https://dl.strem.io/android/v1.12.1-androidTV/com.stremio.one-1.12.1-51048577-armeabi-v7a.apk",
       "mirror": "stremio",
       "category": "Стриминг",
-      "ver": "1.10.4"
+      "ver": "1.12.1"
     },
     {
       "title": "Xtreme-IPTV",
